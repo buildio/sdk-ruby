@@ -147,4 +147,6 @@ Authentication schemes defined for the API:
 
 ### open_id_connect
 
+## Build
+openapi-generator generate -g ruby -i ~/Projects/antimony/swagger/v1/swagger.yaml -o . --skip-validate-spec --git-host github.com --git-repo-id sdk-ruby --git-user-id buildio --additional-properties=gemName=build_client,moduleName=BuildClient
 
