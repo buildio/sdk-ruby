@@ -13,38 +13,17 @@ Generator version: 7.6.0
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class Namespace
+module BuildClient
+  class AppPipeline
     attr_accessor :id
 
     attr_accessor :name
-
-    attr_accessor :team
-
-    attr_accessor :description
-
-    attr_accessor :state
-
-    attr_accessor :region
-
-    attr_accessor :actor
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'name' => :'name',
-        :'team' => :'team',
-        :'description' => :'description',
-        :'state' => :'state',
-        :'region' => :'region',
-        :'actor' => :'actor',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'name' => :'name'
       }
     end
 
@@ -57,21 +36,15 @@ module OpenapiClient
     def self.openapi_types
       {
         :'id' => :'String',
-        :'name' => :'String',
-        :'team' => :'AppTeam',
-        :'description' => :'String',
-        :'state' => :'String',
-        :'region' => :'String',
-        :'actor' => :'NamespaceActor',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'name' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
+        :'id',
+        :'name'
       ])
     end
 
@@ -79,13 +52,13 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::Namespace` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::AppPipeline` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::Namespace`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::AppPipeline`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -96,34 +69,6 @@ module OpenapiClient
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'team')
-        self.team = attributes[:'team']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'region')
-        self.region = attributes[:'region']
-      end
-
-      if attributes.key?(:'actor')
-        self.actor = attributes[:'actor']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -148,14 +93,7 @@ module OpenapiClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          name == o.name &&
-          team == o.team &&
-          description == o.description &&
-          state == o.state &&
-          region == o.region &&
-          actor == o.actor &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          name == o.name
     end
 
     # @see the `==` method
@@ -167,7 +105,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, description, state, region, actor, created_at, updated_at].hash
+      [id, name].hash
     end
 
     # Builds the object from hash
@@ -231,7 +169,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = BuildClient.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

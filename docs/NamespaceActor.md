@@ -1,4 +1,4 @@
-# OpenapiClient::NamespaceActor
+# BuildClient::NamespaceActor
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::NamespaceActor.new(
+instance = BuildClient::NamespaceActor.new(
   id: null,
   email: null
 )

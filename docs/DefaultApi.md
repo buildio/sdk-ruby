@@ -1,4 +1,4 @@
-# OpenapiClient::DefaultApi
+# BuildClient::DefaultApi
 
 All URIs are relative to *https://app.build.io*
 
@@ -29,9 +29,9 @@ list all config-vars
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -39,13 +39,13 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 app_id_or_name = 'app_id_or_name_example' # String | app id or name
 
 begin
   # list all config-vars
   api_instance.api_v1_apps_app_id_or_name_config_vars_get(app_id_or_name)
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_app_id_or_name_config_vars_get: #{e}"
 end
 ```
@@ -63,7 +63,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_app_id_or_name_config_vars_get_with_http_info: #{e}"
 end
 ```
@@ -98,9 +98,9 @@ set or update config-vars
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -108,7 +108,7 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 app_id_or_name = 'app_id_or_name_example' # String | app id or name
 opts = {
   request_body: { key: 'inner_example'} # Hash<String, String> | 
@@ -117,7 +117,7 @@ opts = {
 begin
   # set or update config-vars
   api_instance.api_v1_apps_app_id_or_name_config_vars_patch(app_id_or_name, opts)
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_app_id_or_name_config_vars_patch: #{e}"
 end
 ```
@@ -135,7 +135,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_app_id_or_name_config_vars_patch_with_http_info: #{e}"
 end
 ```
@@ -171,9 +171,9 @@ create build
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -181,13 +181,13 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 id = 'id_example' # String | app id or name
 
 begin
   # create build
   api_instance.api_v1_apps_id_builds_post(id)
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_id_builds_post: #{e}"
 end
 ```
@@ -205,7 +205,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_id_builds_post_with_http_info: #{e}"
 end
 ```
@@ -240,9 +240,9 @@ restart dynos
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -250,13 +250,13 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 id = 'id_example' # String | app id or name
 
 begin
   # restart dynos
   api_instance.api_v1_apps_id_dynos_delete(id)
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_id_dynos_delete: #{e}"
 end
 ```
@@ -274,7 +274,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_apps_id_dynos_delete_with_http_info: #{e}"
 end
 ```
@@ -309,9 +309,9 @@ identity
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -319,13 +319,13 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 
 begin
   # identity
   result = api_instance.api_v1_me_get
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_me_get: #{e}"
 end
 ```
@@ -343,7 +343,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApiV1MeGet200Response>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_me_get_with_http_info: #{e}"
 end
 ```
@@ -378,9 +378,9 @@ Create a namespace
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -388,15 +388,15 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 opts = {
-  api_v1_namespaces_post_request: OpenapiClient::ApiV1NamespacesPostRequest.new({name: 'name_example', team_id: 'team_id_example', region: 'region_example'}) # ApiV1NamespacesPostRequest | 
+  api_v1_namespaces_post_request: BuildClient::ApiV1NamespacesPostRequest.new({name: 'name_example', team_id: 'team_id_example', region: 'region_example'}) # ApiV1NamespacesPostRequest | 
 }
 
 begin
   # create a namespace
   api_instance.api_v1_namespaces_post(opts)
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_namespaces_post: #{e}"
 end
 ```
@@ -414,7 +414,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_namespaces_post_with_http_info: #{e}"
 end
 ```
@@ -449,9 +449,9 @@ kubernetes oidc-login
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure API key authorization: api_key
   config.api_key['api_key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -464,7 +464,7 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 opts = {
   region: 'us-test-1' # String | 
 }
@@ -473,7 +473,7 @@ begin
   # kubernetes oidc-login
   result = api_instance.api_v1_oidc_login_get(opts)
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_oidc_login_get: #{e}"
 end
 ```
@@ -491,7 +491,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApiV1OidcLoginGet200Response>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_oidc_login_get_with_http_info: #{e}"
 end
 ```
@@ -526,9 +526,9 @@ show app
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -536,14 +536,14 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 id = 'id_example' # String | app id or name
 
 begin
   # show app
   result = api_instance.app(id)
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->app: #{e}"
 end
 ```
@@ -561,7 +561,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <App>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->app_with_http_info: #{e}"
 end
 ```
@@ -598,9 +598,9 @@ List all apps
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -608,7 +608,7 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 opts = {
   team_id: 'team_id_example' # String | team id or name
 }
@@ -617,7 +617,7 @@ begin
   # list apps
   result = api_instance.apps(opts)
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->apps: #{e}"
 end
 ```
@@ -635,7 +635,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<App>>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->apps_with_http_info: #{e}"
 end
 ```
@@ -672,9 +672,9 @@ Show a namespace
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -682,14 +682,14 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 id = 'id_example' # String | Namespace name or ID
 
 begin
   # show namespace
   result = api_instance.namespace(id)
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->namespace: #{e}"
 end
 ```
@@ -707,7 +707,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Namespace>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->namespace_with_http_info: #{e}"
 end
 ```
@@ -744,9 +744,9 @@ List all namespaces
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -754,13 +754,13 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 
 begin
   # list all namespaces
   result = api_instance.namespaces
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->namespaces: #{e}"
 end
 ```
@@ -778,7 +778,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<Namespace>>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->namespaces_with_http_info: #{e}"
 end
 ```
@@ -813,9 +813,9 @@ Show a team
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -823,14 +823,14 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 id = 'id_example' # String | Team name or ID
 
 begin
   # show team
   result = api_instance.team(id)
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->team: #{e}"
 end
 ```
@@ -848,7 +848,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Team>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->team_with_http_info: #{e}"
 end
 ```
@@ -885,9 +885,9 @@ List all teams
 
 ```ruby
 require 'time'
-require 'openapi_client'
+require 'build_client'
 # setup authorization
-OpenapiClient.configure do |config|
+BuildClient.configure do |config|
   # Configure Bearer authorization: bearer
   config.access_token = 'YOUR_BEARER_TOKEN'
 
@@ -895,13 +895,13 @@ OpenapiClient.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = OpenapiClient::DefaultApi.new
+api_instance = BuildClient::DefaultApi.new
 
 begin
   # list all teams
   result = api_instance.teams
   p result
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->teams: #{e}"
 end
 ```
@@ -919,7 +919,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<Team>>
-rescue OpenapiClient::ApiError => e
+rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->teams_with_http_info: #{e}"
 end
 ```

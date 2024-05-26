@@ -13,29 +13,14 @@ Generator version: 7.6.0
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class Team
-    attr_accessor :id
-
-    attr_accessor :name
-
-    attr_accessor :description
-
-    attr_accessor :personal
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+module BuildClient
+  class AppBuildpacksInner
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'description' => :'description',
-        :'personal' => :'personal',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'url' => :'url'
       }
     end
 
@@ -47,19 +32,13 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'description' => :'String',
-        :'personal' => :'Boolean',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'url' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
       ])
     end
 
@@ -67,39 +46,19 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::Team` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::AppBuildpacksInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::Team`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::AppBuildpacksInner`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'personal')
-        self.personal = attributes[:'personal']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -123,12 +82,7 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          description == o.description &&
-          personal == o.personal &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          url == o.url
     end
 
     # @see the `==` method
@@ -140,7 +94,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, personal, created_at, updated_at].hash
+      [url].hash
     end
 
     # Builds the object from hash
@@ -204,7 +158,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = BuildClient.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

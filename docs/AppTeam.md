@@ -1,4 +1,4 @@
-# OpenapiClient::AppTeam
+# BuildClient::AppTeam
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::AppTeam.new(
+instance = BuildClient::AppTeam.new(
   id: null,
   name: null
 )

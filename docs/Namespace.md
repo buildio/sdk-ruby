@@ -1,4 +1,4 @@
-# OpenapiClient::Namespace
+# BuildClient::Namespace
 
 ## Properties
 
@@ -17,9 +17,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::Namespace.new(
+instance = BuildClient::Namespace.new(
   id: null,
   name: null,
   team: null,

@@ -10,7 +10,7 @@ Generator version: 7.6.0
 
 =end
 
-module OpenapiClient
+module BuildClient
   class ApiError < StandardError
     attr_reader :code, :response_headers, :response_body
 

@@ -13,11 +13,11 @@ Generator version: 7.6.0
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "openapi_client/version"
+require "build_client/version"
 
 Gem::Specification.new do |s|
-  s.name        = "openapi_client"
-  s.version     = OpenapiClient::VERSION
+  s.name        = "build_client"
+  s.version     = BuildClient::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["OpenAPI-Generator"]
   s.email       = [""]

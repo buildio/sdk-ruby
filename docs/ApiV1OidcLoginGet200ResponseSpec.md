@@ -1,4 +1,4 @@
-# OpenapiClient::ApiV1OidcLoginGet200ResponseSpec
+# BuildClient::ApiV1OidcLoginGet200ResponseSpec
 
 ## Properties
 
@@ -9,9 +9,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::ApiV1OidcLoginGet200ResponseSpec.new(
+instance = BuildClient::ApiV1OidcLoginGet200ResponseSpec.new(
   interactive: null
 )
 ```

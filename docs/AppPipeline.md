@@ -1,4 +1,4 @@
-# OpenapiClient::AppPipeline
+# BuildClient::AppPipeline
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::AppPipeline.new(
+instance = BuildClient::AppPipeline.new(
   id: null,
   name: null
 )

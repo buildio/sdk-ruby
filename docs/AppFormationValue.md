@@ -1,4 +1,4 @@
-# OpenapiClient::AppFormationValue
+# BuildClient::AppFormationValue
 
 ## Properties
 
@@ -11,9 +11,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::AppFormationValue.new(
+instance = BuildClient::AppFormationValue.new(
   size: null,
   display: null,
   quantity: null

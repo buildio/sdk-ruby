@@ -13,23 +13,23 @@ Generator version: 7.6.0
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class ApiV1OidcLoginGet200Response
-    attr_accessor :kind
+module BuildClient
+  class ApiV1NamespacesPostRequest
+    attr_accessor :name
 
-    attr_accessor :api_version
+    attr_accessor :description
 
-    attr_accessor :spec
+    attr_accessor :team_id
 
-    attr_accessor :status
+    attr_accessor :region
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'kind' => :'kind',
-        :'api_version' => :'apiVersion',
-        :'spec' => :'spec',
-        :'status' => :'status'
+        :'name' => :'name',
+        :'description' => :'description',
+        :'team_id' => :'team_id',
+        :'region' => :'region'
       }
     end
 
@@ -41,10 +41,10 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'kind' => :'String',
-        :'api_version' => :'String',
-        :'spec' => :'ApiV1OidcLoginGet200ResponseSpec',
-        :'status' => :'ApiV1OidcLoginGet200ResponseStatus'
+        :'name' => :'String',
+        :'description' => :'String',
+        :'team_id' => :'String',
+        :'region' => :'String'
       }
     end
 
@@ -58,39 +58,37 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::ApiV1OidcLoginGet200Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::ApiV1NamespacesPostRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::ApiV1OidcLoginGet200Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::ApiV1NamespacesPostRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'kind')
-        self.kind = attributes[:'kind']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       else
-        self.kind = nil
+        self.name = nil
       end
 
-      if attributes.key?(:'api_version')
-        self.api_version = attributes[:'api_version']
-      else
-        self.api_version = nil
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'spec')
-        self.spec = attributes[:'spec']
+      if attributes.key?(:'team_id')
+        self.team_id = attributes[:'team_id']
       else
-        self.spec = nil
+        self.team_id = nil
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'region')
+        self.region = attributes[:'region']
       else
-        self.status = nil
+        self.region = nil
       end
     end
 
@@ -99,20 +97,16 @@ module OpenapiClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @kind.nil?
-        invalid_properties.push('invalid value for "kind", kind cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @api_version.nil?
-        invalid_properties.push('invalid value for "api_version", api_version cannot be nil.')
+      if @team_id.nil?
+        invalid_properties.push('invalid value for "team_id", team_id cannot be nil.')
       end
 
-      if @spec.nil?
-        invalid_properties.push('invalid value for "spec", spec cannot be nil.')
-      end
-
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      if @region.nil?
+        invalid_properties.push('invalid value for "region", region cannot be nil.')
       end
 
       invalid_properties
@@ -122,10 +116,9 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @kind.nil?
-      return false if @api_version.nil?
-      return false if @spec.nil?
-      return false if @status.nil?
+      return false if @name.nil?
+      return false if @team_id.nil?
+      return false if @region.nil?
       true
     end
 
@@ -134,10 +127,10 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          kind == o.kind &&
-          api_version == o.api_version &&
-          spec == o.spec &&
-          status == o.status
+          name == o.name &&
+          description == o.description &&
+          team_id == o.team_id &&
+          region == o.region
     end
 
     # @see the `==` method
@@ -149,7 +142,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [kind, api_version, spec, status].hash
+      [name, description, team_id, region].hash
     end
 
     # Builds the object from hash
@@ -213,7 +206,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = BuildClient.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

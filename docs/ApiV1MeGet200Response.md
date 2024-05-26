@@ -1,4 +1,4 @@
-# OpenapiClient::ApiV1MeGet200Response
+# BuildClient::ApiV1MeGet200Response
 
 ## Properties
 
@@ -9,9 +9,9 @@
 ## Example
 
 ```ruby
-require 'openapi_client'
+require 'build_client'
 
-instance = OpenapiClient::ApiV1MeGet200Response.new(
+instance = BuildClient::ApiV1MeGet200Response.new(
   email: null
 )
 ```

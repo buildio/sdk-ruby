@@ -12,7 +12,7 @@ Generator version: 7.6.0
 
 require 'cgi'
 
-module OpenapiClient
+module BuildClient
   class DefaultApi
     attr_accessor :api_client
 

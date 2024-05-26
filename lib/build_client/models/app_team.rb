@@ -13,21 +13,17 @@ Generator version: 7.6.0
 require 'date'
 require 'time'
 
-module OpenapiClient
-  # Dyno formation
-  class AppFormationValue
-    attr_accessor :size
+module BuildClient
+  class AppTeam
+    attr_accessor :id
 
-    attr_accessor :display
-
-    attr_accessor :quantity
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'size' => :'size',
-        :'display' => :'display',
-        :'quantity' => :'quantity'
+        :'id' => :'id',
+        :'name' => :'name'
       }
     end
 
@@ -39,9 +35,8 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'size' => :'String',
-        :'display' => :'String',
-        :'quantity' => :'Integer'
+        :'id' => :'String',
+        :'name' => :'String'
       }
     end
 
@@ -55,27 +50,23 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::AppFormationValue` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::AppTeam` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::AppFormationValue`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::AppTeam`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'size')
-        self.size = attributes[:'size']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'display')
-        self.display = attributes[:'display']
-      end
-
-      if attributes.key?(:'quantity')
-        self.quantity = attributes[:'quantity']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -99,9 +90,8 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          size == o.size &&
-          display == o.display &&
-          quantity == o.quantity
+          id == o.id &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -113,7 +103,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [size, display, quantity].hash
+      [id, name].hash
     end
 
     # Builds the object from hash
@@ -177,7 +167,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = BuildClient.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

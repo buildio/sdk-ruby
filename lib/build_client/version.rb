@@ -10,6 +10,6 @@ Generator version: 7.6.0
 
 =end
 
-module OpenapiClient
+module BuildClient
   VERSION = '1.0.0'
 end

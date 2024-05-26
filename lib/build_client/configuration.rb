@@ -10,7 +10,7 @@ Generator version: 7.6.0
 
 =end
 
-module OpenapiClient
+module BuildClient
   class Configuration
     # Defines url scheme
     attr_accessor :scheme

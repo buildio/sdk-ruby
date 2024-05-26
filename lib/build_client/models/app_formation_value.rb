@@ -13,14 +13,21 @@ Generator version: 7.6.0
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class ApiV1OidcLoginGet200ResponseSpec
-    attr_accessor :interactive
+module BuildClient
+  # Dyno formation
+  class AppFormationValue
+    attr_accessor :size
+
+    attr_accessor :display
+
+    attr_accessor :quantity
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'interactive' => :'interactive'
+        :'size' => :'size',
+        :'display' => :'display',
+        :'quantity' => :'quantity'
       }
     end
 
@@ -32,7 +39,9 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'interactive' => :'Boolean'
+        :'size' => :'String',
+        :'display' => :'String',
+        :'quantity' => :'Integer'
       }
     end
 
@@ -46,19 +55,27 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::ApiV1OidcLoginGet200ResponseSpec` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::AppFormationValue` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::ApiV1OidcLoginGet200ResponseSpec`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::AppFormationValue`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'interactive')
-        self.interactive = attributes[:'interactive']
+      if attributes.key?(:'size')
+        self.size = attributes[:'size']
+      end
+
+      if attributes.key?(:'display')
+        self.display = attributes[:'display']
+      end
+
+      if attributes.key?(:'quantity')
+        self.quantity = attributes[:'quantity']
       end
     end
 
@@ -82,7 +99,9 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          interactive == o.interactive
+          size == o.size &&
+          display == o.display &&
+          quantity == o.quantity
     end
 
     # @see the `==` method
@@ -94,7 +113,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [interactive].hash
+      [size, display, quantity].hash
     end
 
     # Builds the object from hash
@@ -158,7 +177,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = BuildClient.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

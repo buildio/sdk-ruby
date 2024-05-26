@@ -13,17 +13,23 @@ Generator version: 7.6.0
 require 'date'
 require 'time'
 
-module OpenapiClient
-  class ApiV1OidcLoginGet200ResponseStatus
-    attr_accessor :expiration_timestamp
+module BuildClient
+  class ApiV1OidcLoginGet200Response
+    attr_accessor :kind
 
-    attr_accessor :token
+    attr_accessor :api_version
+
+    attr_accessor :spec
+
+    attr_accessor :status
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'expiration_timestamp' => :'expirationTimestamp',
-        :'token' => :'token'
+        :'kind' => :'kind',
+        :'api_version' => :'apiVersion',
+        :'spec' => :'spec',
+        :'status' => :'status'
       }
     end
 
@@ -35,8 +41,10 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'expiration_timestamp' => :'String',
-        :'token' => :'String'
+        :'kind' => :'String',
+        :'api_version' => :'String',
+        :'spec' => :'ApiV1OidcLoginGet200ResponseSpec',
+        :'status' => :'ApiV1OidcLoginGet200ResponseStatus'
       }
     end
 
@@ -50,23 +58,39 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::ApiV1OidcLoginGet200ResponseStatus` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::ApiV1OidcLoginGet200Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::ApiV1OidcLoginGet200ResponseStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::ApiV1OidcLoginGet200Response`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'expiration_timestamp')
-        self.expiration_timestamp = attributes[:'expiration_timestamp']
+      if attributes.key?(:'kind')
+        self.kind = attributes[:'kind']
+      else
+        self.kind = nil
       end
 
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
+      if attributes.key?(:'api_version')
+        self.api_version = attributes[:'api_version']
+      else
+        self.api_version = nil
+      end
+
+      if attributes.key?(:'spec')
+        self.spec = attributes[:'spec']
+      else
+        self.spec = nil
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      else
+        self.status = nil
       end
     end
 
@@ -75,6 +99,22 @@ module OpenapiClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @kind.nil?
+        invalid_properties.push('invalid value for "kind", kind cannot be nil.')
+      end
+
+      if @api_version.nil?
+        invalid_properties.push('invalid value for "api_version", api_version cannot be nil.')
+      end
+
+      if @spec.nil?
+        invalid_properties.push('invalid value for "spec", spec cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -82,6 +122,10 @@ module OpenapiClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @kind.nil?
+      return false if @api_version.nil?
+      return false if @spec.nil?
+      return false if @status.nil?
       true
     end
 
@@ -90,8 +134,10 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          expiration_timestamp == o.expiration_timestamp &&
-          token == o.token
+          kind == o.kind &&
+          api_version == o.api_version &&
+          spec == o.spec &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -103,7 +149,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [expiration_timestamp, token].hash
+      [kind, api_version, spec, status].hash
     end
 
     # Builds the object from hash
@@ -167,7 +213,7 @@ module OpenapiClient
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = OpenapiClient.const_get(type)
+        klass = BuildClient.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end
