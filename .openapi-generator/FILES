@@ -55,17 +55,4 @@ lib/build_client/models/oidc_login_response_status.rb
 lib/build_client/models/process.rb
 lib/build_client/models/team.rb
 lib/build_client/version.rb
-spec/models/app_buildpack_spec.rb
-spec/models/create_app_request_spec.rb
-spec/models/create_build_request_spec.rb
-spec/models/create_namespace_request_spec.rb
-spec/models/dyno_exec_request_spec.rb
-spec/models/dyno_exec_response_spec.rb
-spec/models/dyno_spec.rb
-spec/models/me_response_spec.rb
-spec/models/namespace_team_spec.rb
-spec/models/oidc_login_response_spec.rb
-spec/models/oidc_login_response_spec_spec.rb
-spec/models/oidc_login_response_status_spec.rb
-spec/models/process_spec.rb
 spec/spec_helper.rb
