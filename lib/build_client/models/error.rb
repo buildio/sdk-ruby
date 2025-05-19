@@ -14,22 +14,13 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class OidcLoginResponse
-    attr_accessor :kind
-
-    attr_accessor :api_version
-
-    attr_accessor :spec
-
-    attr_accessor :status
+  class Error
+    attr_accessor :error
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'kind' => :'kind',
-        :'api_version' => :'apiVersion',
-        :'spec' => :'spec',
-        :'status' => :'status'
+        :'error' => :'error'
       }
     end
 
@@ -41,10 +32,7 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'kind' => :'String',
-        :'api_version' => :'String',
-        :'spec' => :'OidcLoginResponseSpec',
-        :'status' => :'OidcLoginResponseStatus'
+        :'error' => :'String'
       }
     end
 
@@ -58,39 +46,21 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::OidcLoginResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Error` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::OidcLoginResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Error`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'kind')
-        self.kind = attributes[:'kind']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       else
-        self.kind = nil
-      end
-
-      if attributes.key?(:'api_version')
-        self.api_version = attributes[:'api_version']
-      else
-        self.api_version = nil
-      end
-
-      if attributes.key?(:'spec')
-        self.spec = attributes[:'spec']
-      else
-        self.spec = nil
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      else
-        self.status = nil
+        self.error = nil
       end
     end
 
@@ -99,20 +69,8 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @kind.nil?
-        invalid_properties.push('invalid value for "kind", kind cannot be nil.')
-      end
-
-      if @api_version.nil?
-        invalid_properties.push('invalid value for "api_version", api_version cannot be nil.')
-      end
-
-      if @spec.nil?
-        invalid_properties.push('invalid value for "spec", spec cannot be nil.')
-      end
-
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      if @error.nil?
+        invalid_properties.push('invalid value for "error", error cannot be nil.')
       end
 
       invalid_properties
@@ -122,10 +80,7 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @kind.nil?
-      return false if @api_version.nil?
-      return false if @spec.nil?
-      return false if @status.nil?
+      return false if @error.nil?
       true
     end
 
@@ -134,10 +89,7 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          kind == o.kind &&
-          api_version == o.api_version &&
-          spec == o.spec &&
-          status == o.status
+          error == o.error
     end
 
     # @see the `==` method
@@ -149,7 +101,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [kind, api_version, spec, status].hash
+      [error].hash
     end
 
     # Builds the object from hash

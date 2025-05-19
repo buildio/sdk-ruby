@@ -15,10 +15,12 @@ docs/AppTeam.md
 docs/CreateAppRequest.md
 docs/CreateBuildRequest.md
 docs/CreateNamespaceRequest.md
+docs/CreateReviewAppRequest.md
 docs/DefaultApi.md
 docs/Dyno.md
 docs/DynoExecRequest.md
 docs/DynoExecResponse.md
+docs/Error.md
 docs/MeResponse.md
 docs/Namespace.md
 docs/NamespaceActor.md
@@ -27,10 +29,12 @@ docs/OidcLoginResponse.md
 docs/OidcLoginResponseSpec.md
 docs/OidcLoginResponseStatus.md
 docs/Process.md
+docs/ReviewAppsApi.md
 docs/Team.md
 git_push.sh
 lib/build_client.rb
 lib/build_client/api/default_api.rb
+lib/build_client/api/review_apps_api.rb
 lib/build_client/api_client.rb
 lib/build_client/api_error.rb
 lib/build_client/configuration.rb
@@ -42,9 +46,11 @@ lib/build_client/models/app_team.rb
 lib/build_client/models/create_app_request.rb
 lib/build_client/models/create_build_request.rb
 lib/build_client/models/create_namespace_request.rb
+lib/build_client/models/create_review_app_request.rb
 lib/build_client/models/dyno.rb
 lib/build_client/models/dyno_exec_request.rb
 lib/build_client/models/dyno_exec_response.rb
+lib/build_client/models/error.rb
 lib/build_client/models/me_response.rb
 lib/build_client/models/namespace.rb
 lib/build_client/models/namespace_actor.rb
@@ -55,4 +61,7 @@ lib/build_client/models/oidc_login_response_status.rb
 lib/build_client/models/process.rb
 lib/build_client/models/team.rb
 lib/build_client/version.rb
+spec/api/review_apps_api_spec.rb
+spec/models/create_review_app_request_spec.rb
+spec/models/error_spec.rb
 spec/spec_helper.rb
