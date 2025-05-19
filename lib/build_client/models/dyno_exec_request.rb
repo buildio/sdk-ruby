@@ -14,37 +14,14 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class Namespace
-    attr_accessor :id
-
-    attr_accessor :name
-
-    attr_accessor :team
-
-    attr_accessor :description
-
-    attr_accessor :state
-
-    attr_accessor :region
-
-    attr_accessor :actor
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+  class DynoExecRequest
+    # Command to execute in the dyno. Must be an array of strings (e.g. [\"/bin/sh\", \"-c\", \"echo hello\"]).
+    attr_accessor :command
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'team' => :'team',
-        :'description' => :'description',
-        :'state' => :'state',
-        :'region' => :'region',
-        :'actor' => :'actor',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'command' => :'command'
       }
     end
 
@@ -61,22 +38,13 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'team' => :'NamespaceTeam',
-        :'description' => :'String',
-        :'state' => :'String',
-        :'region' => :'String',
-        :'actor' => :'NamespaceActor',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'command' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
       ])
     end
 
@@ -84,52 +52,24 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Namespace` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::DynoExecRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Namespace`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::DynoExecRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'team')
-        self.team = attributes[:'team']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'region')
-        self.region = attributes[:'region']
-      end
-
-      if attributes.key?(:'actor')
-        self.actor = attributes[:'actor']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'command')
+        if (value = attributes[:'command']).is_a?(Array)
+          self.command = value
+        end
+      else
+        self.command = nil
       end
     end
 
@@ -138,6 +78,10 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @command.nil?
+        invalid_properties.push('invalid value for "command", command cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -145,7 +89,18 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @command.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] command Value to be assigned
+    def command=(command)
+      if command.nil?
+        fail ArgumentError, 'command cannot be nil'
+      end
+
+      @command = command
     end
 
     # Checks equality by comparing each attribute.
@@ -153,15 +108,7 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          team == o.team &&
-          description == o.description &&
-          state == o.state &&
-          region == o.region &&
-          actor == o.actor &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          command == o.command
     end
 
     # @see the `==` method
@@ -173,7 +120,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, description, state, region, actor, created_at, updated_at].hash
+      [command].hash
     end
 
     # Builds the object from hash

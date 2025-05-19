@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **team** | [**AppTeam**](AppTeam.md) |  | [optional] |
+| **team** | [**NamespaceTeam**](NamespaceTeam.md) |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **region** | **String** |  | [optional] |

@@ -14,37 +14,25 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class Namespace
-    attr_accessor :id
+  class Process
+    attr_accessor :index
 
-    attr_accessor :name
+    attr_accessor :status
 
-    attr_accessor :team
+    attr_accessor :started_at
 
-    attr_accessor :description
+    attr_accessor :restarts
 
-    attr_accessor :state
-
-    attr_accessor :region
-
-    attr_accessor :actor
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+    attr_accessor :restarted_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'team' => :'team',
-        :'description' => :'description',
-        :'state' => :'state',
-        :'region' => :'region',
-        :'actor' => :'actor',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'index' => :'index',
+        :'status' => :'status',
+        :'started_at' => :'started_at',
+        :'restarts' => :'restarts',
+        :'restarted_at' => :'restarted_at'
       }
     end
 
@@ -61,22 +49,19 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'team' => :'NamespaceTeam',
-        :'description' => :'String',
-        :'state' => :'String',
-        :'region' => :'String',
-        :'actor' => :'NamespaceActor',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'index' => :'Integer',
+        :'status' => :'String',
+        :'started_at' => :'String',
+        :'restarts' => :'Integer',
+        :'restarted_at' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
+        :'restarts',
+        :'restarted_at'
       ])
     end
 
@@ -84,52 +69,42 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Namespace` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Process` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Namespace`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Process`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'index')
+        self.index = attributes[:'index']
+      else
+        self.index = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      else
+        self.status = nil
       end
 
-      if attributes.key?(:'team')
-        self.team = attributes[:'team']
+      if attributes.key?(:'started_at')
+        self.started_at = attributes[:'started_at']
+      else
+        self.started_at = nil
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'restarts')
+        self.restarts = attributes[:'restarts']
       end
 
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'region')
-        self.region = attributes[:'region']
-      end
-
-      if attributes.key?(:'actor')
-        self.actor = attributes[:'actor']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'restarted_at')
+        self.restarted_at = attributes[:'restarted_at']
       end
     end
 
@@ -138,6 +113,18 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @index.nil?
+        invalid_properties.push('invalid value for "index", index cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @started_at.nil?
+        invalid_properties.push('invalid value for "started_at", started_at cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -145,7 +132,40 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @index.nil?
+      return false if @status.nil?
+      return false if @started_at.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] index Value to be assigned
+    def index=(index)
+      if index.nil?
+        fail ArgumentError, 'index cannot be nil'
+      end
+
+      @index = index
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] status Value to be assigned
+    def status=(status)
+      if status.nil?
+        fail ArgumentError, 'status cannot be nil'
+      end
+
+      @status = status
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] started_at Value to be assigned
+    def started_at=(started_at)
+      if started_at.nil?
+        fail ArgumentError, 'started_at cannot be nil'
+      end
+
+      @started_at = started_at
     end
 
     # Checks equality by comparing each attribute.
@@ -153,15 +173,11 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          team == o.team &&
-          description == o.description &&
-          state == o.state &&
-          region == o.region &&
-          actor == o.actor &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          index == o.index &&
+          status == o.status &&
+          started_at == o.started_at &&
+          restarts == o.restarts &&
+          restarted_at == o.restarted_at
     end
 
     # @see the `==` method
@@ -173,7 +189,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, description, state, region, actor, created_at, updated_at].hash
+      [index, status, started_at, restarts, restarted_at].hash
     end
 
     # Builds the object from hash

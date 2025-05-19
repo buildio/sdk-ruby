@@ -14,37 +14,19 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class Namespace
-    attr_accessor :id
+  class CreateBuildRequest
+    attr_accessor :branch
 
-    attr_accessor :name
-
-    attr_accessor :team
+    attr_accessor :commitish
 
     attr_accessor :description
-
-    attr_accessor :state
-
-    attr_accessor :region
-
-    attr_accessor :actor
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'team' => :'team',
-        :'description' => :'description',
-        :'state' => :'state',
-        :'region' => :'region',
-        :'actor' => :'actor',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'branch' => :'branch',
+        :'commitish' => :'commitish',
+        :'description' => :'description'
       }
     end
 
@@ -61,22 +43,15 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'team' => :'NamespaceTeam',
-        :'description' => :'String',
-        :'state' => :'String',
-        :'region' => :'String',
-        :'actor' => :'NamespaceActor',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'branch' => :'String',
+        :'commitish' => :'String',
+        :'description' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
       ])
     end
 
@@ -84,52 +59,28 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Namespace` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::CreateBuildRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Namespace`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::CreateBuildRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'branch')
+        self.branch = attributes[:'branch']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'team')
-        self.team = attributes[:'team']
+      if attributes.key?(:'commitish')
+        self.commitish = attributes[:'commitish']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'region')
-        self.region = attributes[:'region']
-      end
-
-      if attributes.key?(:'actor')
-        self.actor = attributes[:'actor']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -153,15 +104,9 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          team == o.team &&
-          description == o.description &&
-          state == o.state &&
-          region == o.region &&
-          actor == o.actor &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          branch == o.branch &&
+          commitish == o.commitish &&
+          description == o.description
     end
 
     # @see the `==` method
@@ -173,7 +118,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, description, state, region, actor, created_at, updated_at].hash
+      [branch, commitish, description].hash
     end
 
     # Builds the object from hash

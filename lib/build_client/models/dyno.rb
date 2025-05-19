@@ -14,37 +14,25 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class Namespace
-    attr_accessor :id
+  class Dyno
+    attr_accessor :type
 
-    attr_accessor :name
+    attr_accessor :quantity
 
-    attr_accessor :team
+    attr_accessor :size
 
-    attr_accessor :description
+    attr_accessor :display
 
-    attr_accessor :state
-
-    attr_accessor :region
-
-    attr_accessor :actor
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+    attr_accessor :processes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'team' => :'team',
-        :'description' => :'description',
-        :'state' => :'state',
-        :'region' => :'region',
-        :'actor' => :'actor',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'type' => :'type',
+        :'quantity' => :'quantity',
+        :'size' => :'size',
+        :'display' => :'display',
+        :'processes' => :'processes'
       }
     end
 
@@ -61,22 +49,17 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'name' => :'String',
-        :'team' => :'NamespaceTeam',
-        :'description' => :'String',
-        :'state' => :'String',
-        :'region' => :'String',
-        :'actor' => :'NamespaceActor',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'type' => :'String',
+        :'quantity' => :'Integer',
+        :'size' => :'String',
+        :'display' => :'String',
+        :'processes' => :'Array<Process>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'description',
       ])
     end
 
@@ -84,52 +67,48 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Namespace` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Dyno` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Namespace`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Dyno`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'quantity')
+        self.quantity = attributes[:'quantity']
+      else
+        self.quantity = nil
       end
 
-      if attributes.key?(:'team')
-        self.team = attributes[:'team']
+      if attributes.key?(:'size')
+        self.size = attributes[:'size']
+      else
+        self.size = nil
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'display')
+        self.display = attributes[:'display']
+      else
+        self.display = nil
       end
 
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'region')
-        self.region = attributes[:'region']
-      end
-
-      if attributes.key?(:'actor')
-        self.actor = attributes[:'actor']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'processes')
+        if (value = attributes[:'processes']).is_a?(Array)
+          self.processes = value
+        end
+      else
+        self.processes = nil
       end
     end
 
@@ -138,6 +117,26 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
+      if @quantity.nil?
+        invalid_properties.push('invalid value for "quantity", quantity cannot be nil.')
+      end
+
+      if @size.nil?
+        invalid_properties.push('invalid value for "size", size cannot be nil.')
+      end
+
+      if @display.nil?
+        invalid_properties.push('invalid value for "display", display cannot be nil.')
+      end
+
+      if @processes.nil?
+        invalid_properties.push('invalid value for "processes", processes cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -145,7 +144,62 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @type.nil?
+      return false if @quantity.nil?
+      return false if @size.nil?
+      return false if @display.nil?
+      return false if @processes.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] type Value to be assigned
+    def type=(type)
+      if type.nil?
+        fail ArgumentError, 'type cannot be nil'
+      end
+
+      @type = type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] quantity Value to be assigned
+    def quantity=(quantity)
+      if quantity.nil?
+        fail ArgumentError, 'quantity cannot be nil'
+      end
+
+      @quantity = quantity
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] size Value to be assigned
+    def size=(size)
+      if size.nil?
+        fail ArgumentError, 'size cannot be nil'
+      end
+
+      @size = size
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] display Value to be assigned
+    def display=(display)
+      if display.nil?
+        fail ArgumentError, 'display cannot be nil'
+      end
+
+      @display = display
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] processes Value to be assigned
+    def processes=(processes)
+      if processes.nil?
+        fail ArgumentError, 'processes cannot be nil'
+      end
+
+      @processes = processes
     end
 
     # Checks equality by comparing each attribute.
@@ -153,15 +207,11 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          team == o.team &&
-          description == o.description &&
-          state == o.state &&
-          region == o.region &&
-          actor == o.actor &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          type == o.type &&
+          quantity == o.quantity &&
+          size == o.size &&
+          display == o.display &&
+          processes == o.processes
     end
 
     # @see the `==` method
@@ -173,7 +223,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, description, state, region, actor, created_at, updated_at].hash
+      [type, quantity, size, display, processes].hash
     end
 
     # Builds the object from hash

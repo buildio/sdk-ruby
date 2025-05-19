@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **team** | [**AppTeam**](AppTeam.md) |  | [optional] |
+| **id** | **String** |  |  |
+| **name** | **String** |  |  |
+| **team** | [**AppTeam**](AppTeam.md) |  |  |
 | **pipeline** | [**AppPipeline**](AppPipeline.md) |  | [optional] |
 | **dns_refreshed_at** | **String** |  | [optional] |
 | **builds_count** | **Integer** |  | [optional] |
@@ -16,9 +16,9 @@
 | **current_image_id** | **String** |  | [optional] |
 | **current_deployment_id** | **String** |  | [optional] |
 | **formation** | [**Hash&lt;String, AppFormationValue&gt;**](AppFormationValue.md) |  | [optional] |
-| **stack** | **String** |  | [optional] |
-| **region** | **String** |  | [optional] |
-| **buildpacks** | [**Array&lt;AppBuildpacksInner&gt;**](AppBuildpacksInner.md) |  | [optional] |
+| **stack** | **String** |  |  |
+| **region** | **String** |  |  |
+| **buildpacks** | [**Array&lt;AppBuildpack&gt;**](AppBuildpack.md) |  | [optional] |
 | **description** | **String** |  | [optional] |
 | **pipeline_stage** | **String** |  | [optional] |
 | **policy_allow_websockets** | **Boolean** |  | [optional] |
