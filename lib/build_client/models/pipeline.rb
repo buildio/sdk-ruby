@@ -14,42 +14,25 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class CreateReviewAppRequest
-    # Branch to build the review app from
-    attr_accessor :branch
+  class Pipeline
+    attr_accessor :id
 
-    # Pull request number
-    attr_accessor :pull_request_number
+    attr_accessor :name
 
-    # URL to the source code archive
-    attr_accessor :source_blob_url
+    attr_accessor :team
 
-    # Title of the pull request
-    attr_accessor :title
+    attr_accessor :created_at
 
-    # Description of the pull request
-    attr_accessor :description
-
-    # GitHub repository stub (owner/repo)
-    attr_accessor :github_repo
-
-    # Stack to use for the app (e.g., heroku-24, heroku-22)
-    attr_accessor :stack
-
-    # Environment variables for the app
-    attr_accessor :environment
+    attr_accessor :updated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'branch' => :'branch',
-        :'pull_request_number' => :'pull_request_number',
-        :'source_blob_url' => :'source_blob_url',
-        :'title' => :'title',
-        :'description' => :'description',
-        :'github_repo' => :'github_repo',
-        :'stack' => :'stack',
-        :'environment' => :'environment'
+        :'id' => :'id',
+        :'name' => :'name',
+        :'team' => :'team',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -61,25 +44,17 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'branch' => :'String',
-        :'pull_request_number' => :'Integer',
-        :'source_blob_url' => :'String',
-        :'title' => :'String',
-        :'description' => :'String',
-        :'github_repo' => :'String',
-        :'stack' => :'String',
-        :'environment' => :'Hash<String, String>'
+        :'id' => :'String',
+        :'name' => :'String',
+        :'team' => :'PipelineTeam',
+        :'created_at' => :'String',
+        :'updated_at' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'source_blob_url',
-        :'title',
-        :'description',
-        :'github_repo',
-        :'stack',
       ])
     end
 
@@ -87,53 +62,41 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::CreateReviewAppRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Pipeline` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::CreateReviewAppRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Pipeline`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'branch')
-        self.branch = attributes[:'branch']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       else
-        self.branch = nil
+        self.id = nil
       end
 
-      if attributes.key?(:'pull_request_number')
-        self.pull_request_number = attributes[:'pull_request_number']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       else
-        self.pull_request_number = nil
+        self.name = nil
       end
 
-      if attributes.key?(:'source_blob_url')
-        self.source_blob_url = attributes[:'source_blob_url']
+      if attributes.key?(:'team')
+        self.team = attributes[:'team']
+      else
+        self.team = nil
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'github_repo')
-        self.github_repo = attributes[:'github_repo']
-      end
-
-      if attributes.key?(:'stack')
-        self.stack = attributes[:'stack']
-      end
-
-      if attributes.key?(:'environment')
-        if (value = attributes[:'environment']).is_a?(Hash)
-          self.environment = value
-        end
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -142,12 +105,16 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @branch.nil?
-        invalid_properties.push('invalid value for "branch", branch cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @pull_request_number.nil?
-        invalid_properties.push('invalid value for "pull_request_number", pull_request_number cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @team.nil?
+        invalid_properties.push('invalid value for "team", team cannot be nil.')
       end
 
       invalid_properties
@@ -157,8 +124,9 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @branch.nil?
-      return false if @pull_request_number.nil?
+      return false if @id.nil?
+      return false if @name.nil?
+      return false if @team.nil?
       true
     end
 
@@ -167,14 +135,11 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          branch == o.branch &&
-          pull_request_number == o.pull_request_number &&
-          source_blob_url == o.source_blob_url &&
-          title == o.title &&
-          description == o.description &&
-          github_repo == o.github_repo &&
-          stack == o.stack &&
-          environment == o.environment
+          id == o.id &&
+          name == o.name &&
+          team == o.team &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -186,7 +151,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [branch, pull_request_number, source_blob_url, title, description, github_repo, stack, environment].hash
+      [id, name, team, created_at, updated_at].hash
     end
 
     # Builds the object from hash

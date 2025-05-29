@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **error** | **String** |  |  |
+| **code** | **String** | Machine-readable error code |  |
+| **message** | **String** | Human-readable error message | [optional] |
+| **details** | **Hash&lt;String, Object&gt;** | Additional error details (optional) | [optional] |
 
 ## Example
 
@@ -12,7 +14,9 @@
 require 'build_client'
 
 instance = BuildClient::Error.new(
-  error: null
+  code: null,
+  message: null,
+  details: null
 )
 ```
 

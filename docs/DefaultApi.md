@@ -1,6 +1,6 @@
 # BuildClient::DefaultApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://app.build.io*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -1241,7 +1241,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## team

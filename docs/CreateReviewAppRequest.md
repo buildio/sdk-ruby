@@ -10,6 +10,7 @@
 | **title** | **String** | Title of the pull request | [optional] |
 | **description** | **String** | Description of the pull request | [optional] |
 | **github_repo** | **String** | GitHub repository stub (owner/repo) | [optional] |
+| **stack** | **String** | Stack to use for the app (e.g., heroku-24, heroku-22) | [optional] |
 | **environment** | **Hash&lt;String, String&gt;** | Environment variables for the app | [optional] |
 
 ## Example
@@ -24,6 +25,7 @@ instance = BuildClient::CreateReviewAppRequest.new(
   title: null,
   description: null,
   github_repo: null,
+  stack: null,
   environment: null
 )
 ```

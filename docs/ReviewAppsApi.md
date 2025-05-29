@@ -1,14 +1,14 @@
 # BuildClient::ReviewAppsApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://app.build.io*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_review_app**](ReviewAppsApi.md#create_review_app) | **POST** /api/v1/pipelines/{pipeline_id}/review_apps | create a review app |
-| [**delete_review_app**](ReviewAppsApi.md#delete_review_app) | **DELETE** /api/v1/review_apps/{id} | delete a review app |
-| [**get_review_app**](ReviewAppsApi.md#get_review_app) | **GET** /api/v1/review_apps/{id} | get a specific review app |
+| [**create_review_app**](ReviewAppsApi.md#create_review_app) | **POST** /api/v1/pipelines/{pipeline_id}/review-apps | create a review app |
+| [**delete_review_app**](ReviewAppsApi.md#delete_review_app) | **DELETE** /api/v1/review-apps/{id} | delete a review app |
+| [**get_review_app**](ReviewAppsApi.md#get_review_app) | **GET** /api/v1/review-apps/{id} | get a specific review app |
 | [**get_review_app_by_app_id**](ReviewAppsApi.md#get_review_app_by_app_id) | **GET** /api/v1/apps/{app_id}/review-apps | get review app by its app id |
-| [**list_review_apps**](ReviewAppsApi.md#list_review_apps) | **GET** /api/v1/pipelines/{pipeline_id}/review_apps | list review apps for a pipeline |
+| [**list_review_apps**](ReviewAppsApi.md#list_review_apps) | **GET** /api/v1/pipelines/{pipeline_id}/review-apps | list review apps for a pipeline |
 
 
 ## create_review_app

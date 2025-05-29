@@ -45,7 +45,7 @@ module BuildClient
         fail ArgumentError, "Missing the required parameter 'pipeline_id' when calling ReviewAppsApi.create_review_app"
       end
       # resource path
-      local_var_path = '/api/v1/pipelines/{pipeline_id}/review_apps'.sub('{' + 'pipeline_id' + '}', CGI.escape(pipeline_id.to_s))
+      local_var_path = '/api/v1/pipelines/{pipeline_id}/review-apps'.sub('{' + 'pipeline_id' + '}', CGI.escape(pipeline_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -113,7 +113,7 @@ module BuildClient
         fail ArgumentError, "Missing the required parameter 'id' when calling ReviewAppsApi.delete_review_app"
       end
       # resource path
-      local_var_path = '/api/v1/review_apps/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/api/v1/review-apps/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -174,7 +174,7 @@ module BuildClient
         fail ArgumentError, "Missing the required parameter 'id' when calling ReviewAppsApi.get_review_app"
       end
       # resource path
-      local_var_path = '/api/v1/review_apps/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/api/v1/review-apps/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -300,7 +300,7 @@ module BuildClient
         fail ArgumentError, "Missing the required parameter 'pipeline_id' when calling ReviewAppsApi.list_review_apps"
       end
       # resource path
-      local_var_path = '/api/v1/pipelines/{pipeline_id}/review_apps'.sub('{' + 'pipeline_id' + '}', CGI.escape(pipeline_id.to_s))
+      local_var_path = '/api/v1/pipelines/{pipeline_id}/review-apps'.sub('{' + 'pipeline_id' + '}', CGI.escape(pipeline_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

@@ -11,5 +11,5 @@ Generator version: 7.11.0
 =end
 
 module BuildClient
-  VERSION = '1.0.21'
+  VERSION = '1.0.25'
 end

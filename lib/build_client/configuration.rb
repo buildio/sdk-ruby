@@ -157,8 +157,8 @@ module BuildClient
     attr_accessor :force_ending_format
 
     def initialize
-      @scheme = 'http'
-      @host = 'localhost:3000'
+      @scheme = 'https'
+      @host = 'app.build.io'
       @base_path = ''
       @server_index = nil
       @server_operation_index = {}
@@ -272,12 +272,12 @@ module BuildClient
     def server_settings
       [
         {
-          url: "http://{defaultHost}",
+          url: "https://{defaultHost}",
           description: "No description provided",
           variables: {
             defaultHost: {
                 description: "No description provided",
-                default_value: "localhost:3000",
+                default_value: "app.build.io",
               }
             }
         }

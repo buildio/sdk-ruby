@@ -15,12 +15,21 @@ require 'time'
 
 module BuildClient
   class Error
-    attr_accessor :error
+    # Machine-readable error code
+    attr_accessor :code
+
+    # Human-readable error message
+    attr_accessor :message
+
+    # Additional error details (optional)
+    attr_accessor :details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error'
+        :'code' => :'code',
+        :'message' => :'message',
+        :'details' => :'details'
       }
     end
 
@@ -32,7 +41,9 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'String'
+        :'code' => :'String',
+        :'message' => :'String',
+        :'details' => :'Hash<String, Object>'
       }
     end
 
@@ -57,10 +68,20 @@ module BuildClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       else
-        self.error = nil
+        self.code = nil
+      end
+
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
+      end
+
+      if attributes.key?(:'details')
+        if (value = attributes[:'details']).is_a?(Hash)
+          self.details = value
+        end
       end
     end
 
@@ -69,8 +90,8 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @error.nil?
-        invalid_properties.push('invalid value for "error", error cannot be nil.')
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
       end
 
       invalid_properties
@@ -80,7 +101,7 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @error.nil?
+      return false if @code.nil?
       true
     end
 
@@ -89,7 +110,9 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error
+          code == o.code &&
+          message == o.message &&
+          details == o.details
     end
 
     # @see the `==` method
@@ -101,7 +124,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error].hash
+      [code, message, details].hash
     end
 
     # Builds the object from hash
