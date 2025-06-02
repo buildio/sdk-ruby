@@ -25,7 +25,6 @@ require 'build_client/models/app_team'
 require 'build_client/models/create_app_request'
 require 'build_client/models/create_build_request'
 require 'build_client/models/create_namespace_request'
-require 'build_client/models/create_review_app_request'
 require 'build_client/models/dyno'
 require 'build_client/models/dyno_exec_request'
 require 'build_client/models/dyno_exec_response'
@@ -38,16 +37,12 @@ require 'build_client/models/namespace_team'
 require 'build_client/models/oidc_login_response'
 require 'build_client/models/oidc_login_response_spec'
 require 'build_client/models/oidc_login_response_status'
-require 'build_client/models/pipeline'
-require 'build_client/models/pipeline_team'
 require 'build_client/models/process'
 require 'build_client/models/team'
 require 'build_client/models/validation_errors'
 
 # APIs
 require 'build_client/api/default_api'
-require 'build_client/api/pipelines_api'
-require 'build_client/api/review_apps_api'
 
 module BuildClient
   class << self
