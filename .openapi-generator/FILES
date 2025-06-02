@@ -71,6 +71,4 @@ lib/build_client/models/process.rb
 lib/build_client/models/team.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/models/error_response_spec.rb
-spec/models/exec_output_spec.rb
 spec/spec_helper.rb
