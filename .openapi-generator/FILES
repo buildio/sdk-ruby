@@ -28,12 +28,16 @@ docs/NamespaceTeam.md
 docs/OidcLoginResponse.md
 docs/OidcLoginResponseSpec.md
 docs/OidcLoginResponseStatus.md
+docs/Pipeline.md
+docs/PipelineTeam.md
+docs/PipelinesApi.md
 docs/Process.md
 docs/Team.md
 docs/ValidationErrors.md
 git_push.sh
 lib/build_client.rb
 lib/build_client/api/default_api.rb
+lib/build_client/api/pipelines_api.rb
 lib/build_client/api_client.rb
 lib/build_client/api_error.rb
 lib/build_client/configuration.rb
@@ -57,6 +61,8 @@ lib/build_client/models/namespace_team.rb
 lib/build_client/models/oidc_login_response.rb
 lib/build_client/models/oidc_login_response_spec.rb
 lib/build_client/models/oidc_login_response_status.rb
+lib/build_client/models/pipeline.rb
+lib/build_client/models/pipeline_team.rb
 lib/build_client/models/process.rb
 lib/build_client/models/team.rb
 lib/build_client/models/validation_errors.rb
