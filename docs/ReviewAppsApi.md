@@ -31,7 +31,7 @@ BuildClient.configure do |config|
 end
 
 api_instance = BuildClient::ReviewAppsApi.new
-pipeline_id = 'pipeline_id_example' # String | Pipeline ID
+pipeline_id = 'pipeline_id_example' # String | Pipeline ID or Name
 opts = {
   create_review_app_request: BuildClient::CreateReviewAppRequest.new({branch: 'branch_example', pull_request_number: 37}) # CreateReviewAppRequest | 
 }
@@ -67,7 +67,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **pipeline_id** | **String** | Pipeline ID |  |
+| **pipeline_id** | **String** | Pipeline ID or Name |  |
 | **create_review_app_request** | [**CreateReviewAppRequest**](CreateReviewAppRequest.md) |  | [optional] |
 
 ### Return type
@@ -310,7 +310,7 @@ BuildClient.configure do |config|
 end
 
 api_instance = BuildClient::ReviewAppsApi.new
-pipeline_id = 'pipeline_id_example' # String | Pipeline ID
+pipeline_id = 'pipeline_id_example' # String | Pipeline ID or Name
 
 begin
   # list review apps for a pipeline
@@ -343,7 +343,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **pipeline_id** | **String** | Pipeline ID |  |
+| **pipeline_id** | **String** | Pipeline ID or Name |  |
 
 ### Return type
 

@@ -20,7 +20,8 @@ docs/DefaultApi.md
 docs/Dyno.md
 docs/DynoExecRequest.md
 docs/DynoExecResponse.md
-docs/Error.md
+docs/ErrorResponse.md
+docs/ExecOutput.md
 docs/MeResponse.md
 docs/Namespace.md
 docs/NamespaceActor.md
@@ -55,7 +56,8 @@ lib/build_client/models/create_review_app_request.rb
 lib/build_client/models/dyno.rb
 lib/build_client/models/dyno_exec_request.rb
 lib/build_client/models/dyno_exec_response.rb
-lib/build_client/models/error.rb
+lib/build_client/models/error_response.rb
+lib/build_client/models/exec_output.rb
 lib/build_client/models/me_response.rb
 lib/build_client/models/namespace.rb
 lib/build_client/models/namespace_actor.rb
@@ -69,8 +71,6 @@ lib/build_client/models/process.rb
 lib/build_client/models/team.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/api/pipelines_api_spec.rb
-spec/models/pipeline_spec.rb
-spec/models/pipeline_team_spec.rb
-spec/models/validation_errors_spec.rb
+spec/models/error_response_spec.rb
+spec/models/exec_output_spec.rb
 spec/spec_helper.rb
