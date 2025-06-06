@@ -30,6 +30,7 @@
 | **created_at** | **String** |  | [optional] |
 | **updated_at** | **String** |  | [optional] |
 | **deleted_at** | **String** |  | [optional] |
+| **branch** | **String** |  | [optional] |
 
 ## Example
 
@@ -62,7 +63,8 @@ instance = BuildClient::App.new(
   policy_temporary_self_signed: null,
   created_at: null,
   updated_at: null,
-  deleted_at: null
+  deleted_at: null,
+  branch: null
 )
 ```
 
