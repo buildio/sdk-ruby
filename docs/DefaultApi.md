@@ -4,6 +4,9 @@ All URIs are relative to *https://app.build.io*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**api_v1_environments_id_get**](DefaultApi.md#api_v1_environments_id_get) | **GET** /api/v1/environments/{id} | get environment config-vars (e.g. pipeline RA env) |
+| [**api_v1_environments_id_key_delete**](DefaultApi.md#api_v1_environments_id_key_delete) | **DELETE** /api/v1/environments/{id}/{key} | delete environment config-var |
+| [**api_v1_environments_id_patch**](DefaultApi.md#api_v1_environments_id_patch) | **PATCH** /api/v1/environments/{id} | set or update environment config-vars (e.g. pipeline RA env) |
 | [**app**](DefaultApi.md#app) | **GET** /api/v1/apps/{app_id_or_name} | show app |
 | [**apps**](DefaultApi.md#apps) | **GET** /api/v1/apps | list apps |
 | [**config_vars**](DefaultApi.md#config_vars) | **GET** /api/v1/apps/{app_id_or_name}/config-vars | list all config-vars |
@@ -23,6 +26,219 @@ All URIs are relative to *https://app.build.io*
 | [**set_config_vars**](DefaultApi.md#set_config_vars) | **PATCH** /api/v1/apps/{app_id_or_name}/config-vars | set or update config-vars |
 | [**team**](DefaultApi.md#team) | **GET** /api/v1/teams/{id} | show team |
 | [**teams**](DefaultApi.md#teams) | **GET** /api/v1/teams | list all teams |
+
+
+## api_v1_environments_id_get
+
+> api_v1_environments_id_get(id)
+
+get environment config-vars (e.g. pipeline RA env)
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+id = 'id_example' # String | Environment ID
+
+begin
+  # get environment config-vars (e.g. pipeline RA env)
+  api_instance.api_v1_environments_id_get(id)
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->api_v1_environments_id_get: #{e}"
+end
+```
+
+#### Using the api_v1_environments_id_get_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> api_v1_environments_id_get_with_http_info(id)
+
+```ruby
+begin
+  # get environment config-vars (e.g. pipeline RA env)
+  data, status_code, headers = api_instance.api_v1_environments_id_get_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->api_v1_environments_id_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Environment ID |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## api_v1_environments_id_key_delete
+
+> api_v1_environments_id_key_delete(id, key)
+
+delete environment config-var
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+id = 'id_example' # String | Environment ID
+key = 'key_example' # String | config var key
+
+begin
+  # delete environment config-var
+  api_instance.api_v1_environments_id_key_delete(id, key)
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->api_v1_environments_id_key_delete: #{e}"
+end
+```
+
+#### Using the api_v1_environments_id_key_delete_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> api_v1_environments_id_key_delete_with_http_info(id, key)
+
+```ruby
+begin
+  # delete environment config-var
+  data, status_code, headers = api_instance.api_v1_environments_id_key_delete_with_http_info(id, key)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->api_v1_environments_id_key_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Environment ID |  |
+| **key** | **String** | config var key |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+## api_v1_environments_id_patch
+
+> api_v1_environments_id_patch(id, opts)
+
+set or update environment config-vars (e.g. pipeline RA env)
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+id = 'id_example' # String | Environment ID
+opts = {
+  request_body: { key: 'inner_example'} # Hash<String, String> | 
+}
+
+begin
+  # set or update environment config-vars (e.g. pipeline RA env)
+  api_instance.api_v1_environments_id_patch(id, opts)
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->api_v1_environments_id_patch: #{e}"
+end
+```
+
+#### Using the api_v1_environments_id_patch_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> api_v1_environments_id_patch_with_http_info(id, opts)
+
+```ruby
+begin
+  # set or update environment config-vars (e.g. pipeline RA env)
+  data, status_code, headers = api_instance.api_v1_environments_id_patch_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->api_v1_environments_id_patch_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Environment ID |  |
+| **request_body** | [**Hash&lt;String, String&gt;**](String.md) |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## app
