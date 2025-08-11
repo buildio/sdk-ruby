@@ -14,28 +14,38 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class Pipeline
+  class PipelineEnvironmentsInner
     attr_accessor :id
 
-    attr_accessor :name
+    attr_accessor :kind
 
-    attr_accessor :team
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :environments
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'name' => :'name',
-        :'team' => :'team',
-        :'environments' => :'environments',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'kind' => :'kind'
       }
     end
 
@@ -53,11 +63,7 @@ module BuildClient
     def self.openapi_types
       {
         :'id' => :'String',
-        :'name' => :'String',
-        :'team' => :'PipelineTeam',
-        :'environments' => :'Array<PipelineEnvironmentsInner>',
-        :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'kind' => :'String'
       }
     end
 
@@ -71,48 +77,24 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Pipeline` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::PipelineEnvironmentsInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Pipeline`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::PipelineEnvironmentsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      else
-        self.id = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
-      end
-
-      if attributes.key?(:'team')
-        self.team = attributes[:'team']
-      else
-        self.team = nil
-      end
-
-      if attributes.key?(:'environments')
-        if (value = attributes[:'environments']).is_a?(Array)
-          self.environments = value
-        end
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'kind')
+        self.kind = attributes[:'kind']
       end
     end
 
@@ -121,18 +103,6 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @team.nil?
-        invalid_properties.push('invalid value for "team", team cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -140,40 +110,19 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @name.nil?
-      return false if @team.nil?
+      kind_validator = EnumAttributeValidator.new('String', ["ra", "ci", "ai"])
+      return false unless kind_validator.valid?(@kind)
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] kind Object to be assigned
+    def kind=(kind)
+      validator = EnumAttributeValidator.new('String', ["ra", "ci", "ai"])
+      unless validator.valid?(kind)
+        fail ArgumentError, "invalid value for \"kind\", must be one of #{validator.allowable_values}."
       end
-
-      @id = id
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] team Value to be assigned
-    def team=(team)
-      if team.nil?
-        fail ArgumentError, 'team cannot be nil'
-      end
-
-      @team = team
+      @kind = kind
     end
 
     # Checks equality by comparing each attribute.
@@ -182,11 +131,7 @@ module BuildClient
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          name == o.name &&
-          team == o.team &&
-          environments == o.environments &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          kind == o.kind
     end
 
     # @see the `==` method
@@ -198,7 +143,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, environments, created_at, updated_at].hash
+      [id, kind].hash
     end
 
     # Builds the object from hash

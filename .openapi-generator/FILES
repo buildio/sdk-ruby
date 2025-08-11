@@ -29,6 +29,7 @@ docs/OidcLoginResponse.md
 docs/OidcLoginResponseSpec.md
 docs/OidcLoginResponseStatus.md
 docs/Pipeline.md
+docs/PipelineEnvironmentsInner.md
 docs/PipelineTeam.md
 docs/PipelinesApi.md
 docs/Process.md
@@ -62,6 +63,7 @@ lib/build_client/models/oidc_login_response.rb
 lib/build_client/models/oidc_login_response_spec.rb
 lib/build_client/models/oidc_login_response_status.rb
 lib/build_client/models/pipeline.rb
+lib/build_client/models/pipeline_environments_inner.rb
 lib/build_client/models/pipeline_team.rb
 lib/build_client/models/process.rb
 lib/build_client/models/team.rb
@@ -89,6 +91,7 @@ spec/models/namespace_team_spec.rb
 spec/models/oidc_login_response_spec.rb
 spec/models/oidc_login_response_spec_spec.rb
 spec/models/oidc_login_response_status_spec.rb
+spec/models/pipeline_environments_inner_spec.rb
 spec/models/pipeline_spec.rb
 spec/models/pipeline_team_spec.rb
 spec/models/process_spec.rb
