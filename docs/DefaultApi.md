@@ -1,6 +1,6 @@
 # BuildClient::DefaultApi
 
-All URIs are relative to *https://app.build.io*
+All URIs are relative to *https://devhost.antimony.io*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -30,7 +30,7 @@ All URIs are relative to *https://app.build.io*
 
 ## api_v1_environments_id_get
 
-> api_v1_environments_id_get(id)
+> Hash&lt;String, String&gt; api_v1_environments_id_get(id)
 
 get environment config-vars (e.g. pipeline RA env)
 
@@ -53,7 +53,8 @@ id = 'id_example' # String | Environment ID
 
 begin
   # get environment config-vars (e.g. pipeline RA env)
-  api_instance.api_v1_environments_id_get(id)
+  result = api_instance.api_v1_environments_id_get(id)
+  p result
 rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_environments_id_get: #{e}"
 end
@@ -61,9 +62,9 @@ end
 
 #### Using the api_v1_environments_id_get_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> api_v1_environments_id_get_with_http_info(id)
+> <Array(Hash&lt;String, String&gt;, Integer, Hash)> api_v1_environments_id_get_with_http_info(id)
 
 ```ruby
 begin
@@ -71,7 +72,7 @@ begin
   data, status_code, headers = api_instance.api_v1_environments_id_get_with_http_info(id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => Hash&lt;String, String&gt;
 rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->api_v1_environments_id_get_with_http_info: #{e}"
 end
@@ -85,7 +86,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+**Hash&lt;String, String&gt;**
 
 ### Authorization
 

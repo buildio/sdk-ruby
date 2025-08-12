@@ -1,6 +1,6 @@
 # BuildClient::PipelinesApi
 
-All URIs are relative to *https://app.build.io*
+All URIs are relative to *https://devhost.antimony.io*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |

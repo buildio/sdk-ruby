@@ -158,7 +158,7 @@ module BuildClient
 
     def initialize
       @scheme = 'https'
-      @host = 'app.build.io'
+      @host = 'devhost.antimony.io'
       @base_path = ''
       @server_index = nil
       @server_operation_index = {}
@@ -277,7 +277,7 @@ module BuildClient
           variables: {
             defaultHost: {
                 description: "No description provided",
-                default_value: "app.build.io",
+                default_value: "devhost.antimony.io",
               }
             }
         }

@@ -36,7 +36,7 @@ describe 'DefaultApi' do
   # get environment config-vars (e.g. pipeline RA env)
   # @param id Environment ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Hash<String, String>]
   describe 'api_v1_environments_id_get test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

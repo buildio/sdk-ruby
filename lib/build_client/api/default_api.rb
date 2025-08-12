@@ -22,16 +22,16 @@ module BuildClient
     # get environment config-vars (e.g. pipeline RA env)
     # @param id [String] Environment ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Hash<String, String>]
     def api_v1_environments_id_get(id, opts = {})
-      api_v1_environments_id_get_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = api_v1_environments_id_get_with_http_info(id, opts)
+      data
     end
 
     # get environment config-vars (e.g. pipeline RA env)
     # @param id [String] Environment ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Hash<String, String>, Integer, Hash)>] Hash<String, String> data, response status code and response headers
     def api_v1_environments_id_get_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.api_v1_environments_id_get ...'
@@ -58,7 +58,7 @@ module BuildClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'Hash<String, String>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
