@@ -1,6 +1,6 @@
 # BuildClient::DefaultApi
 
-All URIs are relative to *https://devhost.antimony.io*
+All URIs are relative to *https://app.build.io*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
