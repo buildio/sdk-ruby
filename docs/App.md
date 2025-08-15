@@ -31,6 +31,7 @@
 | **updated_at** | **String** |  | [optional] |
 | **deleted_at** | **String** |  | [optional] |
 | **branch** | **String** |  | [optional] |
+| **environment_id** | **String** |  | [optional] |
 
 ## Example
 
@@ -64,7 +65,8 @@ instance = BuildClient::App.new(
   created_at: null,
   updated_at: null,
   deleted_at: null,
-  branch: null
+  branch: null,
+  environment_id: null
 )
 ```
 
