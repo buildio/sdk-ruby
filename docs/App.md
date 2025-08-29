@@ -30,7 +30,8 @@
 | **created_at** | **String** |  | [optional] |
 | **updated_at** | **String** |  | [optional] |
 | **deleted_at** | **String** |  | [optional] |
-| **branch** | **String** |  | [optional] |
+| **web_url** | **String** | Full HTTPS URL for the application | [optional] |
+| **branch** | **String** | GitHub branch for the application | [optional] |
 | **environment_id** | **String** |  | [optional] |
 
 ## Example
@@ -65,6 +66,7 @@ instance = BuildClient::App.new(
   created_at: null,
   updated_at: null,
   deleted_at: null,
+  web_url: null,
   branch: null,
   environment_id: null
 )
