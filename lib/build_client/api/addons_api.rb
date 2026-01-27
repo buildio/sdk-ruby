@@ -227,6 +227,69 @@ module BuildClient
       return data, status_code, headers
     end
 
+    # show addon info
+    # Get detailed addon info including attachments
+    # @param id [String] Addon ID or name
+    # @param [Hash] opts the optional parameters
+    # @return [AddonWithAttachments]
+    def get_addon_info(id, opts = {})
+      data, _status_code, _headers = get_addon_info_with_http_info(id, opts)
+      data
+    end
+
+    # show addon info
+    # Get detailed addon info including attachments
+    # @param id [String] Addon ID or name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AddonWithAttachments, Integer, Hash)>] AddonWithAttachments data, response status code and response headers
+    def get_addon_info_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AddonsApi.get_addon_info ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling AddonsApi.get_addon_info"
+      end
+      # resource path
+      local_var_path = '/api/v1/addons/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AddonWithAttachments'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"AddonsApi.get_addon_info",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AddonsApi#get_addon_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # list addons
     # List all addons for an app
     # @param app_id_or_name [String] App ID or name
@@ -286,6 +349,69 @@ module BuildClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AddonsApi#list_app_addons\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # list team addons
+    # List all addons for a team (across all apps)
+    # @param team_id [String] Team ID or name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Addon>]
+    def list_team_addons(team_id, opts = {})
+      data, _status_code, _headers = list_team_addons_with_http_info(team_id, opts)
+      data
+    end
+
+    # list team addons
+    # List all addons for a team (across all apps)
+    # @param team_id [String] Team ID or name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Addon>, Integer, Hash)>] Array<Addon> data, response status code and response headers
+    def list_team_addons_with_http_info(team_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AddonsApi.list_team_addons ...'
+      end
+      # verify the required parameter 'team_id' is set
+      if @api_client.config.client_side_validation && team_id.nil?
+        fail ArgumentError, "Missing the required parameter 'team_id' when calling AddonsApi.list_team_addons"
+      end
+      # resource path
+      local_var_path = '/api/v1/teams/{team_id}/addons'.sub('{' + 'team_id' + '}', CGI.escape(team_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Addon>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"AddonsApi.list_team_addons",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AddonsApi#list_team_addons\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
