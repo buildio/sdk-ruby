@@ -70,15 +70,17 @@ BuildClient.configure do |config|
   config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
-api_instance = BuildClient::DefaultApi.new
-id = 'id_example' # String | Environment ID
+api_instance = BuildClient::AddonAttachmentsApi.new
+opts = {
+  create_addon_attachment_request: BuildClient::CreateAddonAttachmentRequest.new({addon: 'addon_example', app: 'app_example'}) # CreateAddonAttachmentRequest | 
+}
 
 begin
-  #get environment config-vars (e.g. pipeline RA env)
-  result = api_instance.api_v1_environments_id_get(id)
+  #create addon attachment
+  result = api_instance.create_addon_attachment(opts)
   p result
 rescue BuildClient::ApiError => e
-  puts "Exception when calling DefaultApi->api_v1_environments_id_get: #{e}"
+  puts "Exception when calling AddonAttachmentsApi->create_addon_attachment: #{e}"
 end
 
 ```
@@ -89,6 +91,14 @@ All URIs are relative to *https://app.build.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*BuildClient::AddonAttachmentsApi* | [**create_addon_attachment**](docs/AddonAttachmentsApi.md#create_addon_attachment) | **POST** /api/v1/addon-attachments | create addon attachment
+*BuildClient::AddonAttachmentsApi* | [**delete_addon_attachment**](docs/AddonAttachmentsApi.md#delete_addon_attachment) | **DELETE** /api/v1/addon-attachments/{addon_attachment_id} | delete addon attachment
+*BuildClient::AddonAttachmentsApi* | [**get_addon_attachment**](docs/AddonAttachmentsApi.md#get_addon_attachment) | **GET** /api/v1/addon-attachments/{addon_attachment_id} | show addon attachment
+*BuildClient::AddonAttachmentsApi* | [**list_addon_attachments**](docs/AddonAttachmentsApi.md#list_addon_attachments) | **GET** /api/v1/addon-attachments | list addon attachments
+*BuildClient::AddonsApi* | [**create_addon**](docs/AddonsApi.md#create_addon) | **POST** /api/v1/apps/{app_id_or_name}/addons | create addon
+*BuildClient::AddonsApi* | [**destroy_addon**](docs/AddonsApi.md#destroy_addon) | **DELETE** /api/v1/apps/{app_id_or_name}/addons/{addon_id_or_name} | destroy addon
+*BuildClient::AddonsApi* | [**get_addon**](docs/AddonsApi.md#get_addon) | **GET** /api/v1/apps/{app_id_or_name}/addons/{addon_id_or_name} | show addon
+*BuildClient::AddonsApi* | [**list_app_addons**](docs/AddonsApi.md#list_app_addons) | **GET** /api/v1/apps/{app_id_or_name}/addons | list addons
 *BuildClient::DefaultApi* | [**api_v1_environments_id_get**](docs/DefaultApi.md#api_v1_environments_id_get) | **GET** /api/v1/environments/{id} | get environment config-vars (e.g. pipeline RA env)
 *BuildClient::DefaultApi* | [**api_v1_environments_id_key_delete**](docs/DefaultApi.md#api_v1_environments_id_key_delete) | **DELETE** /api/v1/environments/{id}/{key} | delete environment config-var
 *BuildClient::DefaultApi* | [**api_v1_environments_id_patch**](docs/DefaultApi.md#api_v1_environments_id_patch) | **PATCH** /api/v1/environments/{id} | set or update environment config-vars (e.g. pipeline RA env)
@@ -124,14 +134,24 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [BuildClient::Addon](docs/Addon.md)
+ - [BuildClient::AddonApp](docs/AddonApp.md)
+ - [BuildClient::AddonAttachment](docs/AddonAttachment.md)
+ - [BuildClient::AddonBilledPrice](docs/AddonBilledPrice.md)
+ - [BuildClient::AddonPlan](docs/AddonPlan.md)
+ - [BuildClient::AddonService](docs/AddonService.md)
  - [BuildClient::App](docs/App.md)
  - [BuildClient::AppBuildpack](docs/AppBuildpack.md)
  - [BuildClient::AppFormationValue](docs/AppFormationValue.md)
  - [BuildClient::AppPipeline](docs/AppPipeline.md)
  - [BuildClient::AppTeam](docs/AppTeam.md)
+ - [BuildClient::AttachmentAddon](docs/AttachmentAddon.md)
+ - [BuildClient::CreateAddonAttachmentRequest](docs/CreateAddonAttachmentRequest.md)
+ - [BuildClient::CreateAddonRequest](docs/CreateAddonRequest.md)
  - [BuildClient::CreateAppRequest](docs/CreateAppRequest.md)
  - [BuildClient::CreateBuildRequest](docs/CreateBuildRequest.md)
  - [BuildClient::CreateDomainRequest](docs/CreateDomainRequest.md)
+ - [BuildClient::CreateNamespace410Response](docs/CreateNamespace410Response.md)
  - [BuildClient::CreateNamespaceRequest](docs/CreateNamespaceRequest.md)
  - [BuildClient::Domain](docs/Domain.md)
  - [BuildClient::DomainApp](docs/DomainApp.md)

@@ -126,10 +126,10 @@ describe 'DefaultApi' do
 
   # unit tests for create_namespace
   # create a namespace
-  # Create a namespace
+  # Create a namespace (deprecated - namespaces are now managed by Kubernetes)
   # @param [Hash] opts the optional parameters
   # @option opts [CreateNamespaceRequest] :create_namespace_request 
-  # @return [Namespace]
+  # @return [nil]
   describe 'create_namespace test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

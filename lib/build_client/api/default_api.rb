@@ -524,20 +524,20 @@ module BuildClient
     end
 
     # create a namespace
-    # Create a namespace
+    # Create a namespace (deprecated - namespaces are now managed by Kubernetes)
     # @param [Hash] opts the optional parameters
     # @option opts [CreateNamespaceRequest] :create_namespace_request 
-    # @return [Namespace]
+    # @return [nil]
     def create_namespace(opts = {})
-      data, _status_code, _headers = create_namespace_with_http_info(opts)
-      data
+      create_namespace_with_http_info(opts)
+      nil
     end
 
     # create a namespace
-    # Create a namespace
+    # Create a namespace (deprecated - namespaces are now managed by Kubernetes)
     # @param [Hash] opts the optional parameters
     # @option opts [CreateNamespaceRequest] :create_namespace_request 
-    # @return [Array<(Namespace, Integer, Hash)>] Namespace data, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def create_namespace_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_namespace ...'
@@ -565,7 +565,7 @@ module BuildClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'create_namespace_request'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Namespace'
+      return_type = opts[:debug_return_type]
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']

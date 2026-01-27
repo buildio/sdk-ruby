@@ -14,26 +14,16 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class CreateNamespaceRequest
-    attr_accessor :name
+  class CreateNamespace410Response
+    attr_accessor :code
 
-    # Zone ID (required - namespaces are zone-scoped)
-    attr_accessor :zone_id
-
-    attr_accessor :team_id
-
-    attr_accessor :description
-
-    attr_accessor :region
+    attr_accessor :message
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'zone_id' => :'zone_id',
-        :'team_id' => :'team_id',
-        :'description' => :'description',
-        :'region' => :'region'
+        :'code' => :'code',
+        :'message' => :'message'
       }
     end
 
@@ -50,20 +40,14 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'zone_id' => :'String',
-        :'team_id' => :'String',
-        :'description' => :'String',
-        :'region' => :'String'
+        :'code' => :'String',
+        :'message' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'team_id',
-        :'description',
-        :'region'
       ])
     end
 
@@ -71,40 +55,24 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::CreateNamespaceRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::CreateNamespace410Response` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::CreateNamespaceRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::CreateNamespace410Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.key?(:'zone_id')
-        self.zone_id = attributes[:'zone_id']
-      else
-        self.zone_id = nil
-      end
-
-      if attributes.key?(:'team_id')
-        self.team_id = attributes[:'team_id']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'region')
-        self.region = attributes[:'region']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
       end
     end
 
@@ -113,14 +81,6 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @zone_id.nil?
-        invalid_properties.push('invalid value for "zone_id", zone_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -128,29 +88,7 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
-      return false if @zone_id.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] zone_id Value to be assigned
-    def zone_id=(zone_id)
-      if zone_id.nil?
-        fail ArgumentError, 'zone_id cannot be nil'
-      end
-
-      @zone_id = zone_id
     end
 
     # Checks equality by comparing each attribute.
@@ -158,11 +96,8 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          zone_id == o.zone_id &&
-          team_id == o.team_id &&
-          description == o.description &&
-          region == o.region
+          code == o.code &&
+          message == o.message
     end
 
     # @see the `==` method
@@ -174,7 +109,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, zone_id, team_id, description, region].hash
+      [code, message].hash
     end
 
     # Builds the object from hash

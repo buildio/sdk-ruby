@@ -603,11 +603,11 @@ nil (empty response body)
 
 ## create_namespace
 
-> <Namespace> create_namespace(opts)
+> create_namespace(opts)
 
 create a namespace
 
-Create a namespace
+Create a namespace (deprecated - namespaces are now managed by Kubernetes)
 
 ### Examples
 
@@ -625,13 +625,12 @@ end
 
 api_instance = BuildClient::DefaultApi.new
 opts = {
-  create_namespace_request: BuildClient::CreateNamespaceRequest.new({name: 'name_example'}) # CreateNamespaceRequest | 
+  create_namespace_request: BuildClient::CreateNamespaceRequest.new({name: 'name_example', zone_id: 'zone_id_example'}) # CreateNamespaceRequest | 
 }
 
 begin
   # create a namespace
-  result = api_instance.create_namespace(opts)
-  p result
+  api_instance.create_namespace(opts)
 rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->create_namespace: #{e}"
 end
@@ -639,9 +638,9 @@ end
 
 #### Using the create_namespace_with_http_info variant
 
-This returns an Array which contains the response data, status code and headers.
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(<Namespace>, Integer, Hash)> create_namespace_with_http_info(opts)
+> <Array(nil, Integer, Hash)> create_namespace_with_http_info(opts)
 
 ```ruby
 begin
@@ -649,7 +648,7 @@ begin
   data, status_code, headers = api_instance.create_namespace_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Namespace>
+  p data # => nil
 rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->create_namespace_with_http_info: #{e}"
 end
@@ -663,7 +662,7 @@ end
 
 ### Return type
 
-[**Namespace**](Namespace.md)
+nil (empty response body)
 
 ### Authorization
 
