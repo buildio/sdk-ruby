@@ -33,6 +33,8 @@
 | **web_url** | **String** | Full HTTPS URL for the application | [optional] |
 | **branch** | **String** | GitHub branch for the application | [optional] |
 | **environment_id** | **String** |  | [optional] |
+| **ssh_host** | **String** | SSH host for running one-off dynos | [optional] |
+| **ssh_port** | **Integer** | SSH port for running one-off dynos | [optional] |
 
 ## Example
 
@@ -68,7 +70,9 @@ instance = BuildClient::App.new(
   deleted_at: null,
   web_url: null,
   branch: null,
-  environment_id: null
+  environment_id: null,
+  ssh_host: null,
+  ssh_port: null
 )
 ```
 

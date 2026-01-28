@@ -21,6 +21,9 @@ module BuildClient
     # Globally unique addon name (optional)
     attr_accessor :name
 
+    # User-provided description of the addon (optional)
+    attr_accessor :description
+
     # Addon-specific configuration options (use list-addon-fields to discover available options for each service)
     attr_accessor :config
 
@@ -29,6 +32,7 @@ module BuildClient
       {
         :'plan' => :'plan',
         :'name' => :'name',
+        :'description' => :'description',
         :'config' => :'config'
       }
     end
@@ -48,6 +52,7 @@ module BuildClient
       {
         :'plan' => :'String',
         :'name' => :'String',
+        :'description' => :'String',
         :'config' => :'Hash<String, Object>'
       }
     end
@@ -56,6 +61,7 @@ module BuildClient
     def self.openapi_nullable
       Set.new([
         :'name',
+        :'description',
       ])
     end
 
@@ -83,6 +89,10 @@ module BuildClient
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'config')
@@ -129,6 +139,7 @@ module BuildClient
       self.class == o.class &&
           plan == o.plan &&
           name == o.name &&
+          description == o.description &&
           config == o.config
     end
 
@@ -141,7 +152,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [plan, name, config].hash
+      [plan, name, description, config].hash
     end
 
     # Builds the object from hash

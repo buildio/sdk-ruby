@@ -109,6 +109,4 @@ lib/build_client/models/team.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/models/addon_info_attachment_spec.rb
-spec/models/addon_with_attachments_spec.rb
 spec/spec_helper.rb
