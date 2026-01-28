@@ -53,7 +53,7 @@ module BuildClient
         :'plan' => :'String',
         :'name' => :'String',
         :'description' => :'String',
-        :'config' => :'Hash<String, Object>'
+        :'config' => :'Hash<String, String>'
       }
     end
 

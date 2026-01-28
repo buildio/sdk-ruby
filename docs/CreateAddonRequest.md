@@ -7,7 +7,7 @@
 | **plan** | **String** | Addon service and plan in format \&quot;service:plan\&quot; |  |
 | **name** | **String** | Globally unique addon name (optional) | [optional] |
 | **description** | **String** | User-provided description of the addon (optional) | [optional] |
-| **config** | **Hash&lt;String, Object&gt;** | Addon-specific configuration options (use list-addon-fields to discover available options for each service) | [optional] |
+| **config** | **Hash&lt;String, String&gt;** | Addon-specific configuration options (use list-addon-fields to discover available options for each service) | [optional] |
 
 ## Example
 
