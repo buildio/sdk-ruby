@@ -328,10 +328,14 @@ module BuildClient
 
       if attributes.key?(:'ssh_host')
         self.ssh_host = attributes[:'ssh_host']
+      else
+        self.ssh_host = nil
       end
 
       if attributes.key?(:'ssh_port')
         self.ssh_port = attributes[:'ssh_port']
+      else
+        self.ssh_port = nil
       end
     end
 
@@ -360,6 +364,14 @@ module BuildClient
         invalid_properties.push('invalid value for "region", region cannot be nil.')
       end
 
+      if @ssh_host.nil?
+        invalid_properties.push('invalid value for "ssh_host", ssh_host cannot be nil.')
+      end
+
+      if @ssh_port.nil?
+        invalid_properties.push('invalid value for "ssh_port", ssh_port cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -372,6 +384,8 @@ module BuildClient
       return false if @team.nil?
       return false if @stack.nil?
       return false if @region.nil?
+      return false if @ssh_host.nil?
+      return false if @ssh_port.nil?
       true
     end
 
@@ -423,6 +437,26 @@ module BuildClient
       end
 
       @region = region
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] ssh_host Value to be assigned
+    def ssh_host=(ssh_host)
+      if ssh_host.nil?
+        fail ArgumentError, 'ssh_host cannot be nil'
+      end
+
+      @ssh_host = ssh_host
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] ssh_port Value to be assigned
+    def ssh_port=(ssh_port)
+      if ssh_port.nil?
+        fail ArgumentError, 'ssh_port cannot be nil'
+      end
+
+      @ssh_port = ssh_port
     end
 
     # Checks equality by comparing each attribute.
