@@ -20,6 +20,9 @@ module BuildClient
     # Globally unique addon name
     attr_accessor :name
 
+    # User-provided display name for the addon
+    attr_accessor :human_name
+
     # User-provided description of the addon
     attr_accessor :description
 
@@ -70,6 +73,7 @@ module BuildClient
       {
         :'id' => :'id',
         :'name' => :'name',
+        :'human_name' => :'human_name',
         :'description' => :'description',
         :'addon_service' => :'addon_service',
         :'plan' => :'plan',
@@ -99,6 +103,7 @@ module BuildClient
       {
         :'id' => :'String',
         :'name' => :'String',
+        :'human_name' => :'String',
         :'description' => :'String',
         :'addon_service' => :'AddonService',
         :'plan' => :'AddonPlan',
@@ -117,6 +122,7 @@ module BuildClient
     def self.openapi_nullable
       Set.new([
         :'name',
+        :'human_name',
         :'description',
         :'web_url',
       ])
@@ -146,6 +152,10 @@ module BuildClient
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'human_name')
+        self.human_name = attributes[:'human_name']
       end
 
       if attributes.key?(:'description')
@@ -304,6 +314,7 @@ module BuildClient
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
+          human_name == o.human_name &&
           description == o.description &&
           addon_service == o.addon_service &&
           plan == o.plan &&
@@ -326,7 +337,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, addon_service, plan, app, state, config_vars, billed_price, web_url, attachments, created_at, updated_at].hash
+      [id, name, human_name, description, addon_service, plan, app, state, config_vars, billed_price, web_url, attachments, created_at, updated_at].hash
     end
 
     # Builds the object from hash

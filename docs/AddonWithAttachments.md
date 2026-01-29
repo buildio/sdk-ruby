@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  |  |
 | **name** | **String** | Globally unique addon name | [optional] |
+| **human_name** | **String** | User-provided display name for the addon | [optional] |
 | **description** | **String** | User-provided description of the addon | [optional] |
 | **addon_service** | [**AddonService**](AddonService.md) |  |  |
 | **plan** | [**AddonPlan**](AddonPlan.md) |  |  |
@@ -26,6 +27,7 @@ require 'build_client'
 instance = BuildClient::AddonWithAttachments.new(
   id: null,
   name: null,
+  human_name: null,
   description: null,
   addon_service: null,
   plan: null,
