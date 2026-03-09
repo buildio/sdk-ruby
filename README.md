@@ -87,7 +87,7 @@ end
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://app.build.io*
+All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *BuildClient::AddonsApi* | [**get_addon_info**](docs/AddonsApi.md#get_addon_info) | **GET** /api/v1/addons/{id} | show addon info
 *BuildClient::AddonsApi* | [**list_app_addons**](docs/AddonsApi.md#list_app_addons) | **GET** /api/v1/apps/{app_id_or_name}/addons | list addons
 *BuildClient::AddonsApi* | [**list_team_addons**](docs/AddonsApi.md#list_team_addons) | **GET** /api/v1/teams/{team_id}/addons | list team addons
+*BuildClient::CollaboratorsApi* | [**api_v1_apps_app_id_collaborators_get**](docs/CollaboratorsApi.md#api_v1_apps_app_id_collaborators_get) | **GET** /api/v1/apps/{app_id}/collaborators | List collaborators for an app
 *BuildClient::DefaultApi* | [**api_v1_environments_id_get**](docs/DefaultApi.md#api_v1_environments_id_get) | **GET** /api/v1/environments/{id} | get environment config-vars (e.g. pipeline RA env)
 *BuildClient::DefaultApi* | [**api_v1_environments_id_key_delete**](docs/DefaultApi.md#api_v1_environments_id_key_delete) | **DELETE** /api/v1/environments/{id}/{key} | delete environment config-var
 *BuildClient::DefaultApi* | [**api_v1_environments_id_patch**](docs/DefaultApi.md#api_v1_environments_id_patch) | **PATCH** /api/v1/environments/{id} | set or update environment config-vars (e.g. pipeline RA env)
@@ -123,6 +124,7 @@ Class | Method | HTTP request | Description
 *BuildClient::DefaultApi* | [**set_config_vars**](docs/DefaultApi.md#set_config_vars) | **PATCH** /api/v1/apps/{app_id_or_name}/config-vars | set or update config-vars
 *BuildClient::DefaultApi* | [**team**](docs/DefaultApi.md#team) | **GET** /api/v1/teams/{id} | show team
 *BuildClient::DefaultApi* | [**teams**](docs/DefaultApi.md#teams) | **GET** /api/v1/teams | list all teams
+*BuildClient::DefaultApi* | [**update_app**](docs/DefaultApi.md#update_app) | **PATCH** /api/v1/apps/{app_id_or_name} | update app
 *BuildClient::DomainsApi* | [**clear_domains**](docs/DomainsApi.md#clear_domains) | **DELETE** /api/v1/apps/{app_id_or_name}/domains | clear all domains
 *BuildClient::DomainsApi* | [**create_domain**](docs/DomainsApi.md#create_domain) | **POST** /api/v1/apps/{app_id_or_name}/domains | create domain
 *BuildClient::DomainsApi* | [**list_domains**](docs/DomainsApi.md#list_domains) | **GET** /api/v1/apps/{app_id_or_name}/domains | list domains
@@ -150,6 +152,9 @@ Class | Method | HTTP request | Description
  - [BuildClient::AppPipeline](docs/AppPipeline.md)
  - [BuildClient::AppTeam](docs/AppTeam.md)
  - [BuildClient::AttachmentAddon](docs/AttachmentAddon.md)
+ - [BuildClient::Collaborator](docs/Collaborator.md)
+ - [BuildClient::CollaboratorApp](docs/CollaboratorApp.md)
+ - [BuildClient::CollaboratorUser](docs/CollaboratorUser.md)
  - [BuildClient::CreateAddonAttachmentRequest](docs/CreateAddonAttachmentRequest.md)
  - [BuildClient::CreateAddonRequest](docs/CreateAddonRequest.md)
  - [BuildClient::CreateAppRequest](docs/CreateAppRequest.md)
@@ -177,6 +182,7 @@ Class | Method | HTTP request | Description
  - [BuildClient::PipelineTeam](docs/PipelineTeam.md)
  - [BuildClient::Process](docs/Process.md)
  - [BuildClient::Team](docs/Team.md)
+ - [BuildClient::UpdateAppRequest](docs/UpdateAppRequest.md)
  - [BuildClient::UpdateDomainRequest](docs/UpdateDomainRequest.md)
  - [BuildClient::ValidationErrors](docs/ValidationErrors.md)
 
@@ -201,7 +207,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorization URL**: https://app.build.io/oauth/authorize
+- **Authorization URL**: /oauth/authorize
 - **Scopes**: 
   - read: 
   - write: 

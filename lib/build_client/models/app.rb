@@ -39,6 +39,10 @@ module BuildClient
 
     attr_accessor :formation
 
+    # Stack for the next build (Heroku: build_stack)
+    attr_accessor :build_stack
+
+    # Stack currently deployed (Heroku: stack)
     attr_accessor :stack
 
     attr_accessor :region
@@ -96,6 +100,7 @@ module BuildClient
         :'current_image_id' => :'current_image_id',
         :'current_deployment_id' => :'current_deployment_id',
         :'formation' => :'formation',
+        :'build_stack' => :'build_stack',
         :'stack' => :'stack',
         :'region' => :'region',
         :'buildpacks' => :'buildpacks',
@@ -143,6 +148,7 @@ module BuildClient
         :'current_image_id' => :'String',
         :'current_deployment_id' => :'String',
         :'formation' => :'Hash<String, AppFormationValue>',
+        :'build_stack' => :'String',
         :'stack' => :'String',
         :'region' => :'String',
         :'buildpacks' => :'Array<AppBuildpack>',
@@ -252,10 +258,14 @@ module BuildClient
         end
       end
 
+      if attributes.key?(:'build_stack')
+        self.build_stack = attributes[:'build_stack']
+      else
+        self.build_stack = nil
+      end
+
       if attributes.key?(:'stack')
         self.stack = attributes[:'stack']
-      else
-        self.stack = nil
       end
 
       if attributes.key?(:'region')
@@ -356,8 +366,8 @@ module BuildClient
         invalid_properties.push('invalid value for "team", team cannot be nil.')
       end
 
-      if @stack.nil?
-        invalid_properties.push('invalid value for "stack", stack cannot be nil.')
+      if @build_stack.nil?
+        invalid_properties.push('invalid value for "build_stack", build_stack cannot be nil.')
       end
 
       if @region.nil?
@@ -382,7 +392,7 @@ module BuildClient
       return false if @id.nil?
       return false if @name.nil?
       return false if @team.nil?
-      return false if @stack.nil?
+      return false if @build_stack.nil?
       return false if @region.nil?
       return false if @ssh_host.nil?
       return false if @ssh_port.nil?
@@ -420,13 +430,13 @@ module BuildClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] stack Value to be assigned
-    def stack=(stack)
-      if stack.nil?
-        fail ArgumentError, 'stack cannot be nil'
+    # @param [Object] build_stack Value to be assigned
+    def build_stack=(build_stack)
+      if build_stack.nil?
+        fail ArgumentError, 'build_stack cannot be nil'
       end
 
-      @stack = stack
+      @build_stack = build_stack
     end
 
     # Custom attribute writer method with validation
@@ -476,6 +486,7 @@ module BuildClient
           current_image_id == o.current_image_id &&
           current_deployment_id == o.current_deployment_id &&
           formation == o.formation &&
+          build_stack == o.build_stack &&
           stack == o.stack &&
           region == o.region &&
           buildpacks == o.buildpacks &&
@@ -506,7 +517,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, pipeline, dns_refreshed_at, builds_count, deployments_count, slugs_count, current_build_id, current_image_id, current_deployment_id, formation, stack, region, buildpacks, description, pipeline_stage, policy_allow_websockets, policy_response_timeout, policy_max_connections, policy_erosion_resistance_seconds, policy_share_process_namespace, policy_temporary_self_signed, created_at, updated_at, deleted_at, web_url, branch, environment_id, ssh_host, ssh_port].hash
+      [id, name, team, pipeline, dns_refreshed_at, builds_count, deployments_count, slugs_count, current_build_id, current_image_id, current_deployment_id, formation, build_stack, stack, region, buildpacks, description, pipeline_stage, policy_allow_websockets, policy_response_timeout, policy_max_connections, policy_erosion_resistance_seconds, policy_share_process_namespace, policy_temporary_self_signed, created_at, updated_at, deleted_at, web_url, branch, environment_id, ssh_host, ssh_port].hash
     end
 
     # Builds the object from hash

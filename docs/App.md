@@ -16,7 +16,8 @@
 | **current_image_id** | **String** |  | [optional] |
 | **current_deployment_id** | **String** |  | [optional] |
 | **formation** | [**Hash&lt;String, AppFormationValue&gt;**](AppFormationValue.md) |  | [optional] |
-| **stack** | **String** |  |  |
+| **build_stack** | **String** | Stack for the next build (Heroku: build_stack) |  |
+| **stack** | **String** | Stack currently deployed (Heroku: stack) | [optional] |
 | **region** | **String** |  |  |
 | **buildpacks** | [**Array&lt;AppBuildpack&gt;**](AppBuildpack.md) |  | [optional] |
 | **description** | **String** |  | [optional] |
@@ -54,6 +55,7 @@ instance = BuildClient::App.new(
   current_image_id: null,
   current_deployment_id: null,
   formation: null,
+  build_stack: null,
   stack: null,
   region: null,
   buildpacks: null,

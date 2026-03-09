@@ -1,6 +1,6 @@
 # BuildClient::DefaultApi
 
-All URIs are relative to *https://app.build.io*
+All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -26,6 +26,7 @@ All URIs are relative to *https://app.build.io*
 | [**set_config_vars**](DefaultApi.md#set_config_vars) | **PATCH** /api/v1/apps/{app_id_or_name}/config-vars | set or update config-vars |
 | [**team**](DefaultApi.md#team) | **GET** /api/v1/teams/{id} | show team |
 | [**teams**](DefaultApi.md#teams) | **GET** /api/v1/teams | list all teams |
+| [**update_app**](DefaultApi.md#update_app) | **PATCH** /api/v1/apps/{app_id_or_name} | update app |
 
 
 ## api_v1_environments_id_get
@@ -239,7 +240,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 
 ## app
@@ -1457,7 +1458,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 
 ## team
@@ -1598,5 +1599,81 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_app
+
+> <App> update_app(app_id_or_name, opts)
+
+update app
+
+Update app attributes. Use build_stack to change the stack for the next build.
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+app_id_or_name = 'app_id_or_name_example' # String | app id or name
+opts = {
+  update_app_request: BuildClient::UpdateAppRequest.new # UpdateAppRequest | 
+}
+
+begin
+  # update app
+  result = api_instance.update_app(app_id_or_name, opts)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->update_app: #{e}"
+end
+```
+
+#### Using the update_app_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<App>, Integer, Hash)> update_app_with_http_info(app_id_or_name, opts)
+
+```ruby
+begin
+  # update app
+  data, status_code, headers = api_instance.update_app_with_http_info(app_id_or_name, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <App>
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->update_app_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id_or_name** | **String** | app id or name |  |
+| **update_app_request** | [**UpdateAppRequest**](UpdateAppRequest.md) |  | [optional] |
+
+### Return type
+
+[**App**](App.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

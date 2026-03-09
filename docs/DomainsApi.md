@@ -1,6 +1,6 @@
 # BuildClient::DomainsApi
 
-All URIs are relative to *https://app.build.io*
+All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
