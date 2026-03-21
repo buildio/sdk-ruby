@@ -95,6 +95,8 @@ Class | Method | HTTP request | Description
 *BuildClient::AddonAttachmentsApi* | [**delete_addon_attachment**](docs/AddonAttachmentsApi.md#delete_addon_attachment) | **DELETE** /api/v1/addon-attachments/{addon_attachment_id} | delete addon attachment
 *BuildClient::AddonAttachmentsApi* | [**get_addon_attachment**](docs/AddonAttachmentsApi.md#get_addon_attachment) | **GET** /api/v1/addon-attachments/{addon_attachment_id} | show addon attachment
 *BuildClient::AddonAttachmentsApi* | [**list_addon_attachments**](docs/AddonAttachmentsApi.md#list_addon_attachments) | **GET** /api/v1/addon-attachments | list addon attachments
+*BuildClient::AddonServicesApi* | [**list_addon_service_plans**](docs/AddonServicesApi.md#list_addon_service_plans) | **GET** /api/v1/addon-services/{name}/plans | list plans for addon service
+*BuildClient::AddonServicesApi* | [**list_addon_services**](docs/AddonServicesApi.md#list_addon_services) | **GET** /api/v1/addon-services | list addon services
 *BuildClient::AddonsApi* | [**create_addon**](docs/AddonsApi.md#create_addon) | **POST** /api/v1/apps/{app_id_or_name}/addons | create addon
 *BuildClient::AddonsApi* | [**destroy_addon**](docs/AddonsApi.md#destroy_addon) | **DELETE** /api/v1/apps/{app_id_or_name}/addons/{addon_id_or_name} | destroy addon
 *BuildClient::AddonsApi* | [**get_addon**](docs/AddonsApi.md#get_addon) | **GET** /api/v1/apps/{app_id_or_name}/addons/{addon_id_or_name} | show addon
@@ -131,6 +133,7 @@ Class | Method | HTTP request | Description
 *BuildClient::DomainsApi* | [**remove_domain**](docs/DomainsApi.md#remove_domain) | **DELETE** /api/v1/apps/{app_id_or_name}/domains/{domain_id} | remove domain
 *BuildClient::DomainsApi* | [**show_domain**](docs/DomainsApi.md#show_domain) | **GET** /api/v1/apps/{app_id_or_name}/domains/{domain_id} | show domain
 *BuildClient::DomainsApi* | [**update_domain**](docs/DomainsApi.md#update_domain) | **PATCH** /api/v1/apps/{app_id_or_name}/domains/{domain_id} | update domain
+*BuildClient::FormationApi* | [**update_formation**](docs/FormationApi.md#update_formation) | **PATCH** /api/v1/apps/{app_id_or_name}/formation | batch update formation
 *BuildClient::PipelinesApi* | [**get_pipeline**](docs/PipelinesApi.md#get_pipeline) | **GET** /api/v1/pipelines/{pipeline_id_or_name} | get a specific pipeline
 *BuildClient::PipelinesApi* | [**list_pipeline_apps**](docs/PipelinesApi.md#list_pipeline_apps) | **GET** /api/v1/pipelines/{pipeline_id_or_name}/apps | list apps in a pipeline
 *BuildClient::PipelinesApi* | [**list_pipelines**](docs/PipelinesApi.md#list_pipelines) | **GET** /api/v1/pipelines | list pipelines
@@ -144,7 +147,11 @@ Class | Method | HTTP request | Description
  - [BuildClient::AddonBilledPrice](docs/AddonBilledPrice.md)
  - [BuildClient::AddonInfoAttachment](docs/AddonInfoAttachment.md)
  - [BuildClient::AddonPlan](docs/AddonPlan.md)
+ - [BuildClient::AddonPlanCatalogItem](docs/AddonPlanCatalogItem.md)
+ - [BuildClient::AddonPlanPrice](docs/AddonPlanPrice.md)
  - [BuildClient::AddonService](docs/AddonService.md)
+ - [BuildClient::AddonServiceCatalogItem](docs/AddonServiceCatalogItem.md)
+ - [BuildClient::AddonServiceCategory](docs/AddonServiceCategory.md)
  - [BuildClient::AddonWithAttachments](docs/AddonWithAttachments.md)
  - [BuildClient::App](docs/App.md)
  - [BuildClient::AppBuildpack](docs/AppBuildpack.md)
@@ -170,6 +177,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::DynoExecResponse](docs/DynoExecResponse.md)
  - [BuildClient::ErrorResponse](docs/ErrorResponse.md)
  - [BuildClient::ExecOutput](docs/ExecOutput.md)
+ - [BuildClient::FormationBatchUpdateRequest](docs/FormationBatchUpdateRequest.md)
+ - [BuildClient::FormationUpdate](docs/FormationUpdate.md)
  - [BuildClient::MeResponse](docs/MeResponse.md)
  - [BuildClient::Namespace](docs/Namespace.md)
  - [BuildClient::NamespaceActor](docs/NamespaceActor.md)
