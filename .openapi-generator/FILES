@@ -135,12 +135,4 @@ lib/build_client/models/update_app_request.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/api/addon_services_api_spec.rb
-spec/api/formation_api_spec.rb
-spec/models/addon_plan_catalog_item_spec.rb
-spec/models/addon_plan_price_spec.rb
-spec/models/addon_service_catalog_item_spec.rb
-spec/models/addon_service_category_spec.rb
-spec/models/formation_batch_update_request_spec.rb
-spec/models/formation_update_spec.rb
 spec/spec_helper.rb

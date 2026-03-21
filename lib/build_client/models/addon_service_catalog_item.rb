@@ -29,8 +29,6 @@ module BuildClient
 
     attr_accessor :supports_multiple_installations
 
-    attr_accessor :is_visible
-
     attr_accessor :category
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -43,7 +41,6 @@ module BuildClient
         :'supports_log_drains' => :'supports_log_drains',
         :'supports_sharing' => :'supports_sharing',
         :'supports_multiple_installations' => :'supports_multiple_installations',
-        :'is_visible' => :'is_visible',
         :'category' => :'category'
       }
     end
@@ -68,7 +65,6 @@ module BuildClient
         :'supports_log_drains' => :'Boolean',
         :'supports_sharing' => :'Boolean',
         :'supports_multiple_installations' => :'Boolean',
-        :'is_visible' => :'Boolean',
         :'category' => :'AddonServiceCategory'
       }
     end
@@ -129,10 +125,6 @@ module BuildClient
 
       if attributes.key?(:'supports_multiple_installations')
         self.supports_multiple_installations = attributes[:'supports_multiple_installations']
-      end
-
-      if attributes.key?(:'is_visible')
-        self.is_visible = attributes[:'is_visible']
       end
 
       if attributes.key?(:'category')
@@ -227,7 +219,6 @@ module BuildClient
           supports_log_drains == o.supports_log_drains &&
           supports_sharing == o.supports_sharing &&
           supports_multiple_installations == o.supports_multiple_installations &&
-          is_visible == o.is_visible &&
           category == o.category
     end
 
@@ -240,7 +231,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, human_name, state, supports_log_drains, supports_sharing, supports_multiple_installations, is_visible, category].hash
+      [id, name, human_name, state, supports_log_drains, supports_sharing, supports_multiple_installations, category].hash
     end
 
     # Builds the object from hash

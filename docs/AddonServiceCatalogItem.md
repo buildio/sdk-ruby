@@ -11,7 +11,6 @@
 | **supports_log_drains** | **Boolean** |  | [optional] |
 | **supports_sharing** | **Boolean** |  | [optional] |
 | **supports_multiple_installations** | **Boolean** |  | [optional] |
-| **is_visible** | **Boolean** |  | [optional] |
 | **category** | [**AddonServiceCategory**](AddonServiceCategory.md) |  | [optional] |
 
 ## Example
@@ -27,7 +26,6 @@ instance = BuildClient::AddonServiceCatalogItem.new(
   supports_log_drains: null,
   supports_sharing: null,
   supports_multiple_installations: null,
-  is_visible: null,
   category: null
 )
 ```

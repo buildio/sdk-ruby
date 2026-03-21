@@ -9,7 +9,6 @@
 | **human_name** | **String** |  |  |
 | **description** | **String** |  | [optional] |
 | **state** | **String** |  |  |
-| **is_visible** | **Boolean** |  | [optional] |
 | **monthly_price** | [**AddonPlanPrice**](AddonPlanPrice.md) |  | [optional] |
 | **yearly_price** | [**AddonPlanPrice**](AddonPlanPrice.md) |  | [optional] |
 
@@ -24,7 +23,6 @@ instance = BuildClient::AddonPlanCatalogItem.new(
   human_name: null,
   description: null,
   state: null,
-  is_visible: null,
   monthly_price: null,
   yearly_price: null
 )

@@ -25,8 +25,6 @@ module BuildClient
 
     attr_accessor :state
 
-    attr_accessor :is_visible
-
     attr_accessor :monthly_price
 
     attr_accessor :yearly_price
@@ -39,7 +37,6 @@ module BuildClient
         :'human_name' => :'human_name',
         :'description' => :'description',
         :'state' => :'state',
-        :'is_visible' => :'is_visible',
         :'monthly_price' => :'monthly_price',
         :'yearly_price' => :'yearly_price'
       }
@@ -63,7 +60,6 @@ module BuildClient
         :'human_name' => :'String',
         :'description' => :'String',
         :'state' => :'String',
-        :'is_visible' => :'Boolean',
         :'monthly_price' => :'AddonPlanPrice',
         :'yearly_price' => :'AddonPlanPrice'
       }
@@ -118,10 +114,6 @@ module BuildClient
         self.state = attributes[:'state']
       else
         self.state = nil
-      end
-
-      if attributes.key?(:'is_visible')
-        self.is_visible = attributes[:'is_visible']
       end
 
       if attributes.key?(:'monthly_price')
@@ -218,7 +210,6 @@ module BuildClient
           human_name == o.human_name &&
           description == o.description &&
           state == o.state &&
-          is_visible == o.is_visible &&
           monthly_price == o.monthly_price &&
           yearly_price == o.yearly_price
     end
@@ -232,7 +223,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, human_name, description, state, is_visible, monthly_price, yearly_price].hash
+      [id, name, human_name, description, state, monthly_price, yearly_price].hash
     end
 
     # Builds the object from hash
