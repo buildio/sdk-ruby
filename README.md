@@ -138,6 +138,7 @@ Class | Method | HTTP request | Description
 *BuildClient::PipelinePromotionsApi* | [**get_pipeline_promotion**](docs/PipelinePromotionsApi.md#get_pipeline_promotion) | **GET** /api/v1/pipelines/{pipeline_id}/promotions/{id} | get promotion status
 *BuildClient::PipelinePromotionsApi* | [**get_pipeline_promotion_targets**](docs/PipelinePromotionsApi.md#get_pipeline_promotion_targets) | **GET** /api/v1/pipelines/{pipeline_id}/promotions/{id}/promotion-targets | list promotion targets
 *BuildClient::PipelinesApi* | [**get_pipeline**](docs/PipelinesApi.md#get_pipeline) | **GET** /api/v1/pipelines/{pipeline_id_or_name} | get a specific pipeline
+*BuildClient::PipelinesApi* | [**get_pipeline_diff**](docs/PipelinesApi.md#get_pipeline_diff) | **GET** /api/v1/pipelines/{pipeline_id_or_name}/diff | compare source app commits to downstream apps
 *BuildClient::PipelinesApi* | [**list_pipeline_apps**](docs/PipelinesApi.md#list_pipeline_apps) | **GET** /api/v1/pipelines/{pipeline_id_or_name}/apps | list apps in a pipeline
 *BuildClient::PipelinesApi* | [**list_pipelines**](docs/PipelinesApi.md#list_pipelines) | **GET** /api/v1/pipelines | list pipelines
 
@@ -185,6 +186,10 @@ Class | Method | HTTP request | Description
  - [BuildClient::ExecOutput](docs/ExecOutput.md)
  - [BuildClient::FormationBatchUpdateRequest](docs/FormationBatchUpdateRequest.md)
  - [BuildClient::FormationUpdate](docs/FormationUpdate.md)
+ - [BuildClient::GetPipelineDiff200Response](docs/GetPipelineDiff200Response.md)
+ - [BuildClient::GetPipelineDiff200ResponseDiffsInner](docs/GetPipelineDiff200ResponseDiffsInner.md)
+ - [BuildClient::GetPipelineDiff200ResponseDiffsInnerCommitsInner](docs/GetPipelineDiff200ResponseDiffsInnerCommitsInner.md)
+ - [BuildClient::GetPipelineDiff200ResponseSource](docs/GetPipelineDiff200ResponseSource.md)
  - [BuildClient::MeResponse](docs/MeResponse.md)
  - [BuildClient::Namespace](docs/Namespace.md)
  - [BuildClient::NamespaceActor](docs/NamespaceActor.md)

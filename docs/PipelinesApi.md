@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**get_pipeline**](PipelinesApi.md#get_pipeline) | **GET** /api/v1/pipelines/{pipeline_id_or_name} | get a specific pipeline |
+| [**get_pipeline_diff**](PipelinesApi.md#get_pipeline_diff) | **GET** /api/v1/pipelines/{pipeline_id_or_name}/diff | compare source app commits to downstream apps |
 | [**list_pipeline_apps**](PipelinesApi.md#list_pipeline_apps) | **GET** /api/v1/pipelines/{pipeline_id_or_name}/apps | list apps in a pipeline |
 | [**list_pipelines**](PipelinesApi.md#list_pipelines) | **GET** /api/v1/pipelines | list pipelines |
 
@@ -67,6 +68,77 @@ end
 ### Return type
 
 [**Pipeline**](Pipeline.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pipeline_diff
+
+> <GetPipelineDiff200Response> get_pipeline_diff(pipeline_id_or_name, source_app)
+
+compare source app commits to downstream apps
+
+Compares the source app current commit to each downstream app via GitHub compare API.
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BuildClient::PipelinesApi.new
+pipeline_id_or_name = 'pipeline_id_or_name_example' # String | Pipeline ID or Name
+source_app = 'source_app_example' # String | Source app ID or name
+
+begin
+  # compare source app commits to downstream apps
+  result = api_instance.get_pipeline_diff(pipeline_id_or_name, source_app)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling PipelinesApi->get_pipeline_diff: #{e}"
+end
+```
+
+#### Using the get_pipeline_diff_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetPipelineDiff200Response>, Integer, Hash)> get_pipeline_diff_with_http_info(pipeline_id_or_name, source_app)
+
+```ruby
+begin
+  # compare source app commits to downstream apps
+  data, status_code, headers = api_instance.get_pipeline_diff_with_http_info(pipeline_id_or_name, source_app)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetPipelineDiff200Response>
+rescue BuildClient::ApiError => e
+  puts "Error when calling PipelinesApi->get_pipeline_diff_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pipeline_id_or_name** | **String** | Pipeline ID or Name |  |
+| **source_app** | **String** | Source app ID or name |  |
+
+### Return type
+
+[**GetPipelineDiff200Response**](GetPipelineDiff200Response.md)
 
 ### Authorization
 
