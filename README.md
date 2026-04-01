@@ -134,6 +134,9 @@ Class | Method | HTTP request | Description
 *BuildClient::DomainsApi* | [**show_domain**](docs/DomainsApi.md#show_domain) | **GET** /api/v1/apps/{app_id_or_name}/domains/{domain_id} | show domain
 *BuildClient::DomainsApi* | [**update_domain**](docs/DomainsApi.md#update_domain) | **PATCH** /api/v1/apps/{app_id_or_name}/domains/{domain_id} | update domain
 *BuildClient::FormationApi* | [**update_formation**](docs/FormationApi.md#update_formation) | **PATCH** /api/v1/apps/{app_id_or_name}/formation | batch update formation
+*BuildClient::PipelinePromotionsApi* | [**create_pipeline_promotion**](docs/PipelinePromotionsApi.md#create_pipeline_promotion) | **POST** /api/v1/pipelines/{pipeline_id}/promotions | create a pipeline promotion
+*BuildClient::PipelinePromotionsApi* | [**get_pipeline_promotion**](docs/PipelinePromotionsApi.md#get_pipeline_promotion) | **GET** /api/v1/pipelines/{pipeline_id}/promotions/{id} | get promotion status
+*BuildClient::PipelinePromotionsApi* | [**get_pipeline_promotion_targets**](docs/PipelinePromotionsApi.md#get_pipeline_promotion_targets) | **GET** /api/v1/pipelines/{pipeline_id}/promotions/{id}/promotion-targets | list promotion targets
 *BuildClient::PipelinesApi* | [**get_pipeline**](docs/PipelinesApi.md#get_pipeline) | **GET** /api/v1/pipelines/{pipeline_id_or_name} | get a specific pipeline
 *BuildClient::PipelinesApi* | [**list_pipeline_apps**](docs/PipelinesApi.md#list_pipeline_apps) | **GET** /api/v1/pipelines/{pipeline_id_or_name}/apps | list apps in a pipeline
 *BuildClient::PipelinesApi* | [**list_pipelines**](docs/PipelinesApi.md#list_pipelines) | **GET** /api/v1/pipelines | list pipelines
@@ -169,6 +172,9 @@ Class | Method | HTTP request | Description
  - [BuildClient::CreateDomainRequest](docs/CreateDomainRequest.md)
  - [BuildClient::CreateNamespace410Response](docs/CreateNamespace410Response.md)
  - [BuildClient::CreateNamespaceRequest](docs/CreateNamespaceRequest.md)
+ - [BuildClient::CreatePipelinePromotionRequest](docs/CreatePipelinePromotionRequest.md)
+ - [BuildClient::CreatePipelinePromotionRequestSource](docs/CreatePipelinePromotionRequestSource.md)
+ - [BuildClient::CreatePipelinePromotionRequestTargetsInner](docs/CreatePipelinePromotionRequestTargetsInner.md)
  - [BuildClient::Domain](docs/Domain.md)
  - [BuildClient::DomainApp](docs/DomainApp.md)
  - [BuildClient::DomainSniEndpoint](docs/DomainSniEndpoint.md)
@@ -188,8 +194,15 @@ Class | Method | HTTP request | Description
  - [BuildClient::OidcLoginResponseStatus](docs/OidcLoginResponseStatus.md)
  - [BuildClient::Pipeline](docs/Pipeline.md)
  - [BuildClient::PipelineEnvironmentsInner](docs/PipelineEnvironmentsInner.md)
+ - [BuildClient::PipelinePromotion](docs/PipelinePromotion.md)
  - [BuildClient::PipelineTeam](docs/PipelineTeam.md)
  - [BuildClient::Process](docs/Process.md)
+ - [BuildClient::PromotionPipeline](docs/PromotionPipeline.md)
+ - [BuildClient::PromotionSource](docs/PromotionSource.md)
+ - [BuildClient::PromotionSourceApp](docs/PromotionSourceApp.md)
+ - [BuildClient::PromotionTarget](docs/PromotionTarget.md)
+ - [BuildClient::PromotionTargetApp](docs/PromotionTargetApp.md)
+ - [BuildClient::PromotionTargetPromotion](docs/PromotionTargetPromotion.md)
  - [BuildClient::Team](docs/Team.md)
  - [BuildClient::UpdateAppRequest](docs/UpdateAppRequest.md)
  - [BuildClient::UpdateDomainRequest](docs/UpdateDomainRequest.md)
