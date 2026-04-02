@@ -103,6 +103,8 @@ Class | Method | HTTP request | Description
 *BuildClient::AddonsApi* | [**get_addon_info**](docs/AddonsApi.md#get_addon_info) | **GET** /api/v1/addons/{id} | show addon info
 *BuildClient::AddonsApi* | [**list_app_addons**](docs/AddonsApi.md#list_app_addons) | **GET** /api/v1/apps/{app_id_or_name}/addons | list addons
 *BuildClient::AddonsApi* | [**list_team_addons**](docs/AddonsApi.md#list_team_addons) | **GET** /api/v1/teams/{team_id}/addons | list team addons
+*BuildClient::BuildpacksApi* | [**list_buildpacks**](docs/BuildpacksApi.md#list_buildpacks) | **GET** /api/v1/apps/{app_id_or_name}/buildpacks | list buildpacks
+*BuildClient::BuildpacksApi* | [**update_buildpacks**](docs/BuildpacksApi.md#update_buildpacks) | **PUT** /api/v1/apps/{app_id_or_name}/buildpacks | update buildpacks
 *BuildClient::CollaboratorsApi* | [**api_v1_apps_app_id_collaborators_get**](docs/CollaboratorsApi.md#api_v1_apps_app_id_collaborators_get) | **GET** /api/v1/apps/{app_id}/collaborators | List collaborators for an app
 *BuildClient::DefaultApi* | [**api_v1_environments_id_get**](docs/DefaultApi.md#api_v1_environments_id_get) | **GET** /api/v1/environments/{id} | get environment config-vars (e.g. pipeline RA env)
 *BuildClient::DefaultApi* | [**api_v1_environments_id_key_delete**](docs/DefaultApi.md#api_v1_environments_id_key_delete) | **DELETE** /api/v1/environments/{id}/{key} | delete environment config-var
@@ -163,6 +165,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::AppPipeline](docs/AppPipeline.md)
  - [BuildClient::AppTeam](docs/AppTeam.md)
  - [BuildClient::AttachmentAddon](docs/AttachmentAddon.md)
+ - [BuildClient::BuildpackInstallation](docs/BuildpackInstallation.md)
+ - [BuildClient::BuildpackInstallationBuildpack](docs/BuildpackInstallationBuildpack.md)
  - [BuildClient::Collaborator](docs/Collaborator.md)
  - [BuildClient::CollaboratorApp](docs/CollaboratorApp.md)
  - [BuildClient::CollaboratorUser](docs/CollaboratorUser.md)
@@ -210,6 +214,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::PromotionTargetPromotion](docs/PromotionTargetPromotion.md)
  - [BuildClient::Team](docs/Team.md)
  - [BuildClient::UpdateAppRequest](docs/UpdateAppRequest.md)
+ - [BuildClient::UpdateBuildpacksRequest](docs/UpdateBuildpacksRequest.md)
+ - [BuildClient::UpdateBuildpacksRequestUpdatesInner](docs/UpdateBuildpacksRequestUpdatesInner.md)
  - [BuildClient::UpdateDomainRequest](docs/UpdateDomainRequest.md)
  - [BuildClient::ValidationErrors](docs/ValidationErrors.md)
 

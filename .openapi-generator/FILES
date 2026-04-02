@@ -28,6 +28,9 @@ docs/AppFormationValue.md
 docs/AppPipeline.md
 docs/AppTeam.md
 docs/AttachmentAddon.md
+docs/BuildpackInstallation.md
+docs/BuildpackInstallationBuildpack.md
+docs/BuildpacksApi.md
 docs/Collaborator.md
 docs/CollaboratorApp.md
 docs/CollaboratorUser.md
@@ -81,6 +84,8 @@ docs/PromotionTargetApp.md
 docs/PromotionTargetPromotion.md
 docs/Team.md
 docs/UpdateAppRequest.md
+docs/UpdateBuildpacksRequest.md
+docs/UpdateBuildpacksRequestUpdatesInner.md
 docs/UpdateDomainRequest.md
 docs/ValidationErrors.md
 git_push.sh
@@ -88,6 +93,7 @@ lib/build_client.rb
 lib/build_client/api/addon_attachments_api.rb
 lib/build_client/api/addon_services_api.rb
 lib/build_client/api/addons_api.rb
+lib/build_client/api/buildpacks_api.rb
 lib/build_client/api/collaborators_api.rb
 lib/build_client/api/default_api.rb
 lib/build_client/api/domains_api.rb
@@ -115,6 +121,8 @@ lib/build_client/models/app_formation_value.rb
 lib/build_client/models/app_pipeline.rb
 lib/build_client/models/app_team.rb
 lib/build_client/models/attachment_addon.rb
+lib/build_client/models/buildpack_installation.rb
+lib/build_client/models/buildpack_installation_buildpack.rb
 lib/build_client/models/collaborator.rb
 lib/build_client/models/collaborator_app.rb
 lib/build_client/models/collaborator_user.rb
@@ -162,11 +170,14 @@ lib/build_client/models/promotion_target_app.rb
 lib/build_client/models/promotion_target_promotion.rb
 lib/build_client/models/team.rb
 lib/build_client/models/update_app_request.rb
+lib/build_client/models/update_buildpacks_request.rb
+lib/build_client/models/update_buildpacks_request_updates_inner.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/models/get_pipeline_diff200_response_diffs_inner_commits_inner_spec.rb
-spec/models/get_pipeline_diff200_response_diffs_inner_spec.rb
-spec/models/get_pipeline_diff200_response_source_spec.rb
-spec/models/get_pipeline_diff200_response_spec.rb
+spec/api/buildpacks_api_spec.rb
+spec/models/buildpack_installation_buildpack_spec.rb
+spec/models/buildpack_installation_spec.rb
+spec/models/update_buildpacks_request_spec.rb
+spec/models/update_buildpacks_request_updates_inner_spec.rb
 spec/spec_helper.rb
