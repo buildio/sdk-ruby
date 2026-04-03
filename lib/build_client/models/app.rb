@@ -74,6 +74,9 @@ module BuildClient
     # Full HTTPS URL for the application
     attr_accessor :web_url
 
+    # Git push URL for deploying via git push
+    attr_accessor :git_url
+
     # GitHub branch for the application
     attr_accessor :branch
 
@@ -116,6 +119,7 @@ module BuildClient
         :'updated_at' => :'updated_at',
         :'deleted_at' => :'deleted_at',
         :'web_url' => :'web_url',
+        :'git_url' => :'git_url',
         :'branch' => :'branch',
         :'environment_id' => :'environment_id',
         :'ssh_host' => :'ssh_host',
@@ -164,6 +168,7 @@ module BuildClient
         :'updated_at' => :'String',
         :'deleted_at' => :'String',
         :'web_url' => :'String',
+        :'git_url' => :'String',
         :'branch' => :'String',
         :'environment_id' => :'String',
         :'ssh_host' => :'String',
@@ -326,6 +331,10 @@ module BuildClient
 
       if attributes.key?(:'web_url')
         self.web_url = attributes[:'web_url']
+      end
+
+      if attributes.key?(:'git_url')
+        self.git_url = attributes[:'git_url']
       end
 
       if attributes.key?(:'branch')
@@ -502,6 +511,7 @@ module BuildClient
           updated_at == o.updated_at &&
           deleted_at == o.deleted_at &&
           web_url == o.web_url &&
+          git_url == o.git_url &&
           branch == o.branch &&
           environment_id == o.environment_id &&
           ssh_host == o.ssh_host &&
@@ -517,7 +527,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, team, pipeline, dns_refreshed_at, builds_count, deployments_count, slugs_count, current_build_id, current_image_id, current_deployment_id, formation, build_stack, stack, region, buildpacks, description, pipeline_stage, policy_allow_websockets, policy_response_timeout, policy_max_connections, policy_erosion_resistance_seconds, policy_share_process_namespace, policy_temporary_self_signed, created_at, updated_at, deleted_at, web_url, branch, environment_id, ssh_host, ssh_port].hash
+      [id, name, team, pipeline, dns_refreshed_at, builds_count, deployments_count, slugs_count, current_build_id, current_image_id, current_deployment_id, formation, build_stack, stack, region, buildpacks, description, pipeline_stage, policy_allow_websockets, policy_response_timeout, policy_max_connections, policy_erosion_resistance_seconds, policy_share_process_namespace, policy_temporary_self_signed, created_at, updated_at, deleted_at, web_url, git_url, branch, environment_id, ssh_host, ssh_port].hash
     end
 
     # Builds the object from hash
