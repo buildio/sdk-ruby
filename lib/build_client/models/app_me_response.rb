@@ -14,13 +14,17 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class AppBuildpack
-    attr_accessor :url
+  class AppMeResponse
+    # Email of the user who minted the token
+    attr_accessor :email
+
+    attr_accessor :app
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'url' => :'url'
+        :'email' => :'email',
+        :'app' => :'app'
       }
     end
 
@@ -37,13 +41,15 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'url' => :'String'
+        :'email' => :'String',
+        :'app' => :'MeApp'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'email',
       ])
     end
 
@@ -51,20 +57,26 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::AppBuildpack` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::AppMeResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::AppBuildpack`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::AppMeResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.key?(:'app')
+        self.app = attributes[:'app']
+      else
+        self.app = nil
       end
     end
 
@@ -73,6 +85,10 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @app.nil?
+        invalid_properties.push('invalid value for "app", app cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -80,7 +96,18 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @app.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] app Value to be assigned
+    def app=(app)
+      if app.nil?
+        fail ArgumentError, 'app cannot be nil'
+      end
+
+      @app = app
     end
 
     # Checks equality by comparing each attribute.
@@ -88,7 +115,8 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          url == o.url
+          email == o.email &&
+          app == o.app
     end
 
     # @see the `==` method
@@ -100,7 +128,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [url].hash
+      [email, app].hash
     end
 
     # Builds the object from hash

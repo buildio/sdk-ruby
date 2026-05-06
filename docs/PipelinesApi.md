@@ -221,11 +221,11 @@ end
 
 ## list_pipelines
 
-> <Array<Pipeline>> list_pipelines
+> <Array<Pipeline>> list_pipelines(opts)
 
 list pipelines
 
-Lists all pipelines accessible to the current user
+Lists all pipelines accessible to the current user. Optionally filter by team.
 
 ### Examples
 
@@ -239,10 +239,13 @@ BuildClient.configure do |config|
 end
 
 api_instance = BuildClient::PipelinesApi.new
+opts = {
+  team_id: 'team_id_example' # String | Filter pipelines by team ID or name
+}
 
 begin
   # list pipelines
-  result = api_instance.list_pipelines
+  result = api_instance.list_pipelines(opts)
   p result
 rescue BuildClient::ApiError => e
   puts "Error when calling PipelinesApi->list_pipelines: #{e}"
@@ -253,12 +256,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<Pipeline>>, Integer, Hash)> list_pipelines_with_http_info
+> <Array(<Array<Pipeline>>, Integer, Hash)> list_pipelines_with_http_info(opts)
 
 ```ruby
 begin
   # list pipelines
-  data, status_code, headers = api_instance.list_pipelines_with_http_info
+  data, status_code, headers = api_instance.list_pipelines_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<Pipeline>>
@@ -269,7 +272,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **team_id** | **String** | Filter pipelines by team ID or name | [optional] |
 
 ### Return type
 

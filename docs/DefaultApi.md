@@ -11,7 +11,6 @@ All URIs are relative to *http://localhost*
 | [**apps**](DefaultApi.md#apps) | **GET** /api/v1/apps | list apps |
 | [**config_vars**](DefaultApi.md#config_vars) | **GET** /api/v1/apps/{app_id_or_name}/config-vars | list all config-vars |
 | [**create_app**](DefaultApi.md#create_app) | **POST** /api/v1/apps | create app |
-| [**create_build**](DefaultApi.md#create_build) | **POST** /api/v1/apps/{app_id_or_name}/builds | create build |
 | [**create_namespace**](DefaultApi.md#create_namespace) | **POST** /api/v1/namespaces | create a namespace |
 | [**delete_config_var**](DefaultApi.md#delete_config_var) | **DELETE** /api/v1/apps/{app_id_or_name}/config-vars/{key} | delete config-var |
 | [**delete_namespace**](DefaultApi.md#delete_namespace) | **DELETE** /api/v1/namespaces/{namespace_id_or_name} | delete a namespace |
@@ -529,79 +528,6 @@ end
 - **Accept**: application/json
 
 
-## create_build
-
-> create_build(app_id_or_name, opts)
-
-create build
-
-### Examples
-
-```ruby
-require 'time'
-require 'build_client'
-# setup authorization
-BuildClient.configure do |config|
-  # Configure Bearer authorization: bearer
-  config.access_token = 'YOUR_BEARER_TOKEN'
-
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = BuildClient::DefaultApi.new
-app_id_or_name = 'app_id_or_name_example' # String | app id or name
-opts = {
-  create_build_request: BuildClient::CreateBuildRequest.new # CreateBuildRequest | 
-}
-
-begin
-  # create build
-  api_instance.create_build(app_id_or_name, opts)
-rescue BuildClient::ApiError => e
-  puts "Error when calling DefaultApi->create_build: #{e}"
-end
-```
-
-#### Using the create_build_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> create_build_with_http_info(app_id_or_name, opts)
-
-```ruby
-begin
-  # create build
-  data, status_code, headers = api_instance.create_build_with_http_info(app_id_or_name, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue BuildClient::ApiError => e
-  puts "Error when calling DefaultApi->create_build_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id_or_name** | **String** | app id or name |  |
-| **create_build_request** | [**CreateBuildRequest**](CreateBuildRequest.md) |  | [optional] |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-
 ## create_namespace
 
 > create_namespace(opts)
@@ -965,9 +891,11 @@ end
 
 ## me
 
-> <MeResponse> me
+> <AppMeResponse> me
 
 identity
+
+Returns identity info for the bearer. Response shape varies by token kind: user tokens return { email }; app-scoped tokens (bldp_) return { app, email } where email is the minting user's email.
 
 ### Examples
 
@@ -998,7 +926,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MeResponse>, Integer, Hash)> me_with_http_info
+> <Array(<AppMeResponse>, Integer, Hash)> me_with_http_info
 
 ```ruby
 begin
@@ -1006,7 +934,7 @@ begin
   data, status_code, headers = api_instance.me_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <MeResponse>
+  p data # => <AppMeResponse>
 rescue BuildClient::ApiError => e
   puts "Error when calling DefaultApi->me_with_http_info: #{e}"
 end
@@ -1018,7 +946,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MeResponse**](MeResponse.md)
+[**AppMeResponse**](AppMeResponse.md)
 
 ### Authorization
 
