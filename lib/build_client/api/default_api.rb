@@ -1145,6 +1145,78 @@ module BuildClient
       return data, status_code, headers
     end
 
+    # run one-off command
+    # @param app_id_or_name [String] app id or name
+    # @param dyno_run_request [DynoRunRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [DynoRunResponse]
+    def run_dyno(app_id_or_name, dyno_run_request, opts = {})
+      data, _status_code, _headers = run_dyno_with_http_info(app_id_or_name, dyno_run_request, opts)
+      data
+    end
+
+    # run one-off command
+    # @param app_id_or_name [String] app id or name
+    # @param dyno_run_request [DynoRunRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DynoRunResponse, Integer, Hash)>] DynoRunResponse data, response status code and response headers
+    def run_dyno_with_http_info(app_id_or_name, dyno_run_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.run_dyno ...'
+      end
+      # verify the required parameter 'app_id_or_name' is set
+      if @api_client.config.client_side_validation && app_id_or_name.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id_or_name' when calling DefaultApi.run_dyno"
+      end
+      # verify the required parameter 'dyno_run_request' is set
+      if @api_client.config.client_side_validation && dyno_run_request.nil?
+        fail ArgumentError, "Missing the required parameter 'dyno_run_request' when calling DefaultApi.run_dyno"
+      end
+      # resource path
+      local_var_path = '/api/v1/apps/{app_id_or_name}/dynos/run'.sub('{' + 'app_id_or_name' + '}', CGI.escape(app_id_or_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(dyno_run_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DynoRunResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.run_dyno",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#run_dyno\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # set or update config-vars
     # @param app_id_or_name [String] app id or name
     # @param [Hash] opts the optional parameters

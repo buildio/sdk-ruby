@@ -22,6 +22,7 @@ All URIs are relative to *http://localhost*
 | [**oidc_login**](DefaultApi.md#oidc_login) | **GET** /api/v1/oidc-login | kubernetes oidc-login |
 | [**restart_all_dynos**](DefaultApi.md#restart_all_dynos) | **DELETE** /api/v1/apps/{app_id_or_name}/dynos | restart all dynos |
 | [**restart_dynos**](DefaultApi.md#restart_dynos) | **DELETE** /api/v1/apps/{app_id_or_name}/dynos/{dyno} | restart specific dyno |
+| [**run_dyno**](DefaultApi.md#run_dyno) | **POST** /api/v1/apps/{app_id_or_name}/dynos/run | run one-off command |
 | [**set_config_vars**](DefaultApi.md#set_config_vars) | **PATCH** /api/v1/apps/{app_id_or_name}/config-vars | set or update config-vars |
 | [**team**](DefaultApi.md#team) | **GET** /api/v1/teams/{id} | show team |
 | [**teams**](DefaultApi.md#teams) | **GET** /api/v1/teams | list all teams |
@@ -1314,6 +1315,78 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## run_dyno
+
+> <DynoRunResponse> run_dyno(app_id_or_name, dyno_run_request)
+
+run one-off command
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+app_id_or_name = 'app_id_or_name_example' # String | app id or name
+dyno_run_request = BuildClient::DynoRunRequest.new({command: 'command_example'}) # DynoRunRequest | 
+
+begin
+  # run one-off command
+  result = api_instance.run_dyno(app_id_or_name, dyno_run_request)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->run_dyno: #{e}"
+end
+```
+
+#### Using the run_dyno_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DynoRunResponse>, Integer, Hash)> run_dyno_with_http_info(app_id_or_name, dyno_run_request)
+
+```ruby
+begin
+  # run one-off command
+  data, status_code, headers = api_instance.run_dyno_with_http_info(app_id_or_name, dyno_run_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DynoRunResponse>
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->run_dyno_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id_or_name** | **String** | app id or name |  |
+| **dyno_run_request** | [**DynoRunRequest**](DynoRunRequest.md) |  |  |
+
+### Return type
+
+[**DynoRunResponse**](DynoRunResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## set_config_vars

@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 *BuildClient::DefaultApi* | [**oidc_login**](docs/DefaultApi.md#oidc_login) | **GET** /api/v1/oidc-login | kubernetes oidc-login
 *BuildClient::DefaultApi* | [**restart_all_dynos**](docs/DefaultApi.md#restart_all_dynos) | **DELETE** /api/v1/apps/{app_id_or_name}/dynos | restart all dynos
 *BuildClient::DefaultApi* | [**restart_dynos**](docs/DefaultApi.md#restart_dynos) | **DELETE** /api/v1/apps/{app_id_or_name}/dynos/{dyno} | restart specific dyno
+*BuildClient::DefaultApi* | [**run_dyno**](docs/DefaultApi.md#run_dyno) | **POST** /api/v1/apps/{app_id_or_name}/dynos/run | run one-off command
 *BuildClient::DefaultApi* | [**set_config_vars**](docs/DefaultApi.md#set_config_vars) | **PATCH** /api/v1/apps/{app_id_or_name}/config-vars | set or update config-vars
 *BuildClient::DefaultApi* | [**team**](docs/DefaultApi.md#team) | **GET** /api/v1/teams/{id} | show team
 *BuildClient::DefaultApi* | [**teams**](docs/DefaultApi.md#teams) | **GET** /api/v1/teams | list all teams
@@ -202,6 +203,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::Dyno](docs/Dyno.md)
  - [BuildClient::DynoExecRequest](docs/DynoExecRequest.md)
  - [BuildClient::DynoExecResponse](docs/DynoExecResponse.md)
+ - [BuildClient::DynoRunRequest](docs/DynoRunRequest.md)
+ - [BuildClient::DynoRunResponse](docs/DynoRunResponse.md)
  - [BuildClient::ErrorResponse](docs/ErrorResponse.md)
  - [BuildClient::ExecOutput](docs/ExecOutput.md)
  - [BuildClient::FormationBatchUpdateRequest](docs/FormationBatchUpdateRequest.md)
