@@ -179,6 +179,4 @@ lib/build_client/models/update_buildpacks_request_updates_inner.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/models/dyno_run_request_spec.rb
-spec/models/dyno_run_response_spec.rb
 spec/spec_helper.rb

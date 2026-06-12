@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **email** | **String** | Email of the user who minted the token | [optional] |
-| **app** | [**MeApp**](MeApp.md) |  |  |
+| **email** | **String** | Email of the user who minted the token |  |
+| **app** | [**MeApp**](MeApp.md) |  | [optional] |
 
 ## Example
 

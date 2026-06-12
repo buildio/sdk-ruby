@@ -71,12 +71,12 @@ module BuildClient
 
       if attributes.key?(:'email')
         self.email = attributes[:'email']
+      else
+        self.email = nil
       end
 
       if attributes.key?(:'app')
         self.app = attributes[:'app']
-      else
-        self.app = nil
       end
     end
 
@@ -85,10 +85,6 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @app.nil?
-        invalid_properties.push('invalid value for "app", app cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -96,18 +92,7 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @app.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] app Value to be assigned
-    def app=(app)
-      if app.nil?
-        fail ArgumentError, 'app cannot be nil'
-      end
-
-      @app = app
     end
 
     # Checks equality by comparing each attribute.
