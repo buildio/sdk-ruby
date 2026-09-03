@@ -9,11 +9,15 @@ All URIs are relative to *http://localhost*
 | [**api_v1_environments_id_patch**](DefaultApi.md#api_v1_environments_id_patch) | **PATCH** /api/v1/environments/{id} | set or update environment config-vars (e.g. pipeline RA env) |
 | [**app**](DefaultApi.md#app) | **GET** /api/v1/apps/{app_id_or_name} | show app |
 | [**apps**](DefaultApi.md#apps) | **GET** /api/v1/apps | list apps |
+| [**build**](DefaultApi.md#build) | **GET** /api/v1/apps/{app_id}/builds/{id} | show build |
+| [**builds**](DefaultApi.md#builds) | **GET** /api/v1/apps/{app_id}/builds | list builds |
 | [**config_vars**](DefaultApi.md#config_vars) | **GET** /api/v1/apps/{app_id_or_name}/config-vars | list all config-vars |
 | [**create_app**](DefaultApi.md#create_app) | **POST** /api/v1/apps | create app |
 | [**create_namespace**](DefaultApi.md#create_namespace) | **POST** /api/v1/namespaces | create a namespace |
 | [**delete_config_var**](DefaultApi.md#delete_config_var) | **DELETE** /api/v1/apps/{app_id_or_name}/config-vars/{key} | delete config-var |
 | [**delete_namespace**](DefaultApi.md#delete_namespace) | **DELETE** /api/v1/namespaces/{namespace_id_or_name} | delete a namespace |
+| [**deployment**](DefaultApi.md#deployment) | **GET** /api/v1/apps/{app_id}/deployments/{id} | show deployment |
+| [**deployments**](DefaultApi.md#deployments) | **GET** /api/v1/apps/{app_id}/deployments | list deployments |
 | [**exec_dyno**](DefaultApi.md#exec_dyno) | **POST** /api/v1/apps/{app_id_or_name}/dynos/{dyno}/exec | exec into dyno |
 | [**list_dynos**](DefaultApi.md#list_dynos) | **GET** /api/v1/apps/{app_id_or_name}/dynos/list | list dynos |
 | [**me**](DefaultApi.md#me) | **GET** /api/v1/me | identity |
@@ -387,6 +391,158 @@ end
 - **Accept**: application/json
 
 
+## build
+
+> <Build> build(app_id, id)
+
+show build
+
+A single build. Previously routed but unimplemented, so it 404ed.
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+app_id = 'app_id_example' # String | app id or name
+id = 'id_example' # String | build id
+
+begin
+  # show build
+  result = api_instance.build(app_id, id)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->build: #{e}"
+end
+```
+
+#### Using the build_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Build>, Integer, Hash)> build_with_http_info(app_id, id)
+
+```ruby
+begin
+  # show build
+  data, status_code, headers = api_instance.build_with_http_info(app_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Build>
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->build_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | app id or name |  |
+| **id** | **String** | build id |  |
+
+### Return type
+
+[**Build**](Build.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## builds
+
+> <Array<Build>> builds(app_id, opts)
+
+list builds
+
+Builds for an app, newest first. Keyset paginated: when more results exist the response carries an RFC 8288 Link header with rel=\"next\". Absent means the last page.
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+app_id = 'app_id_example' # String | app id or name
+opts = {
+  limit: 56, # Integer | Page size. Defaults to 25, capped at 100.
+  cursor: 'cursor_example' # String | Opaque cursor, taken from the previous response's Link header.
+}
+
+begin
+  # list builds
+  result = api_instance.builds(app_id, opts)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->builds: #{e}"
+end
+```
+
+#### Using the builds_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Build>>, Integer, Hash)> builds_with_http_info(app_id, opts)
+
+```ruby
+begin
+  # list builds
+  data, status_code, headers = api_instance.builds_with_http_info(app_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Build>>
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->builds_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | app id or name |  |
+| **limit** | **Integer** | Page size. Defaults to 25, capped at 100. | [optional] |
+| **cursor** | **String** | Opaque cursor, taken from the previous response&#39;s Link header. | [optional] |
+
+### Return type
+
+[**Array&lt;Build&gt;**](Build.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## config_vars
 
 > Hash&lt;String, String&gt; config_vars(app_id_or_name)
@@ -744,6 +900,156 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+
+## deployment
+
+> <Deployment> deployment(app_id, id)
+
+show deployment
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+app_id = 'app_id_example' # String | app id or name
+id = 'id_example' # String | deployment id
+
+begin
+  # show deployment
+  result = api_instance.deployment(app_id, id)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->deployment: #{e}"
+end
+```
+
+#### Using the deployment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Deployment>, Integer, Hash)> deployment_with_http_info(app_id, id)
+
+```ruby
+begin
+  # show deployment
+  data, status_code, headers = api_instance.deployment_with_http_info(app_id, id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Deployment>
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->deployment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | app id or name |  |
+| **id** | **String** | deployment id |  |
+
+### Return type
+
+[**Deployment**](Deployment.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deployments
+
+> <Array<Deployment>> deployments(app_id, opts)
+
+list deployments
+
+Deployments for an app, newest first. Keyset paginated the same way as builds: an RFC 8288 Link header when more results exist.
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::DefaultApi.new
+app_id = 'app_id_example' # String | app id or name
+opts = {
+  limit: 56, # Integer | Page size. Defaults to 25, capped at 100.
+  cursor: 'cursor_example' # String | Opaque cursor, taken from the previous response's Link header.
+}
+
+begin
+  # list deployments
+  result = api_instance.deployments(app_id, opts)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->deployments: #{e}"
+end
+```
+
+#### Using the deployments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Deployment>>, Integer, Hash)> deployments_with_http_info(app_id, opts)
+
+```ruby
+begin
+  # list deployments
+  data, status_code, headers = api_instance.deployments_with_http_info(app_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Deployment>>
+rescue BuildClient::ApiError => e
+  puts "Error when calling DefaultApi->deployments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | app id or name |  |
+| **limit** | **Integer** | Page size. Defaults to 25, capped at 100. | [optional] |
+| **cursor** | **String** | Opaque cursor, taken from the previous response&#39;s Link header. | [optional] |
+
+### Return type
+
+[**Array&lt;Deployment&gt;**](Deployment.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## exec_dyno

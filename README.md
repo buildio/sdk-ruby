@@ -128,11 +128,15 @@ Class | Method | HTTP request | Description
 *BuildClient::DefaultApi* | [**api_v1_environments_id_patch**](docs/DefaultApi.md#api_v1_environments_id_patch) | **PATCH** /api/v1/environments/{id} | set or update environment config-vars (e.g. pipeline RA env)
 *BuildClient::DefaultApi* | [**app**](docs/DefaultApi.md#app) | **GET** /api/v1/apps/{app_id_or_name} | show app
 *BuildClient::DefaultApi* | [**apps**](docs/DefaultApi.md#apps) | **GET** /api/v1/apps | list apps
+*BuildClient::DefaultApi* | [**build**](docs/DefaultApi.md#build) | **GET** /api/v1/apps/{app_id}/builds/{id} | show build
+*BuildClient::DefaultApi* | [**builds**](docs/DefaultApi.md#builds) | **GET** /api/v1/apps/{app_id}/builds | list builds
 *BuildClient::DefaultApi* | [**config_vars**](docs/DefaultApi.md#config_vars) | **GET** /api/v1/apps/{app_id_or_name}/config-vars | list all config-vars
 *BuildClient::DefaultApi* | [**create_app**](docs/DefaultApi.md#create_app) | **POST** /api/v1/apps | create app
 *BuildClient::DefaultApi* | [**create_namespace**](docs/DefaultApi.md#create_namespace) | **POST** /api/v1/namespaces | create a namespace
 *BuildClient::DefaultApi* | [**delete_config_var**](docs/DefaultApi.md#delete_config_var) | **DELETE** /api/v1/apps/{app_id_or_name}/config-vars/{key} | delete config-var
 *BuildClient::DefaultApi* | [**delete_namespace**](docs/DefaultApi.md#delete_namespace) | **DELETE** /api/v1/namespaces/{namespace_id_or_name} | delete a namespace
+*BuildClient::DefaultApi* | [**deployment**](docs/DefaultApi.md#deployment) | **GET** /api/v1/apps/{app_id}/deployments/{id} | show deployment
+*BuildClient::DefaultApi* | [**deployments**](docs/DefaultApi.md#deployments) | **GET** /api/v1/apps/{app_id}/deployments | list deployments
 *BuildClient::DefaultApi* | [**exec_dyno**](docs/DefaultApi.md#exec_dyno) | **POST** /api/v1/apps/{app_id_or_name}/dynos/{dyno}/exec | exec into dyno
 *BuildClient::DefaultApi* | [**list_dynos**](docs/DefaultApi.md#list_dynos) | **GET** /api/v1/apps/{app_id_or_name}/dynos/list | list dynos
 *BuildClient::DefaultApi* | [**me**](docs/DefaultApi.md#me) | **GET** /api/v1/me | identity
@@ -183,6 +187,9 @@ Class | Method | HTTP request | Description
  - [BuildClient::AppPipeline](docs/AppPipeline.md)
  - [BuildClient::AppTeam](docs/AppTeam.md)
  - [BuildClient::AttachmentAddon](docs/AttachmentAddon.md)
+ - [BuildClient::Build](docs/Build.md)
+ - [BuildClient::BuildSourceBlob](docs/BuildSourceBlob.md)
+ - [BuildClient::BuildUser](docs/BuildUser.md)
  - [BuildClient::BuildpackInstallation](docs/BuildpackInstallation.md)
  - [BuildClient::BuildpackInstallationBuildpack](docs/BuildpackInstallationBuildpack.md)
  - [BuildClient::Collaborator](docs/Collaborator.md)
@@ -197,6 +204,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::CreatePipelinePromotionRequest](docs/CreatePipelinePromotionRequest.md)
  - [BuildClient::CreatePipelinePromotionRequestSource](docs/CreatePipelinePromotionRequestSource.md)
  - [BuildClient::CreatePipelinePromotionRequestTargetsInner](docs/CreatePipelinePromotionRequestTargetsInner.md)
+ - [BuildClient::Deployment](docs/Deployment.md)
+ - [BuildClient::DeploymentBuild](docs/DeploymentBuild.md)
  - [BuildClient::Domain](docs/Domain.md)
  - [BuildClient::DomainApp](docs/DomainApp.md)
  - [BuildClient::DomainSniEndpoint](docs/DomainSniEndpoint.md)

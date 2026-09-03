@@ -29,6 +29,9 @@ docs/AppMeResponse.md
 docs/AppPipeline.md
 docs/AppTeam.md
 docs/AttachmentAddon.md
+docs/Build.md
+docs/BuildSourceBlob.md
+docs/BuildUser.md
 docs/BuildpackInstallation.md
 docs/BuildpackInstallationBuildpack.md
 docs/BuildpacksApi.md
@@ -46,6 +49,8 @@ docs/CreatePipelinePromotionRequest.md
 docs/CreatePipelinePromotionRequestSource.md
 docs/CreatePipelinePromotionRequestTargetsInner.md
 docs/DefaultApi.md
+docs/Deployment.md
+docs/DeploymentBuild.md
 docs/Domain.md
 docs/DomainApp.md
 docs/DomainSniEndpoint.md
@@ -124,6 +129,9 @@ lib/build_client/models/app_me_response.rb
 lib/build_client/models/app_pipeline.rb
 lib/build_client/models/app_team.rb
 lib/build_client/models/attachment_addon.rb
+lib/build_client/models/build.rb
+lib/build_client/models/build_source_blob.rb
+lib/build_client/models/build_user.rb
 lib/build_client/models/buildpack_installation.rb
 lib/build_client/models/buildpack_installation_buildpack.rb
 lib/build_client/models/collaborator.rb
@@ -138,6 +146,8 @@ lib/build_client/models/create_namespace_request.rb
 lib/build_client/models/create_pipeline_promotion_request.rb
 lib/build_client/models/create_pipeline_promotion_request_source.rb
 lib/build_client/models/create_pipeline_promotion_request_targets_inner.rb
+lib/build_client/models/deployment.rb
+lib/build_client/models/deployment_build.rb
 lib/build_client/models/domain.rb
 lib/build_client/models/domain_app.rb
 lib/build_client/models/domain_sni_endpoint.rb
@@ -179,4 +189,9 @@ lib/build_client/models/update_buildpacks_request_updates_inner.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
+spec/models/build_source_blob_spec.rb
+spec/models/build_spec.rb
+spec/models/build_user_spec.rb
+spec/models/deployment_build_spec.rb
+spec/models/deployment_spec.rb
 spec/spec_helper.rb

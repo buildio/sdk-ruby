@@ -332,6 +332,144 @@ module BuildClient
       return data, status_code, headers
     end
 
+    # show build
+    # A single build. Previously routed but unimplemented, so it 404ed.
+    # @param app_id [String] app id or name
+    # @param id [String] build id
+    # @param [Hash] opts the optional parameters
+    # @return [Build]
+    def build(app_id, id, opts = {})
+      data, _status_code, _headers = build_with_http_info(app_id, id, opts)
+      data
+    end
+
+    # show build
+    # A single build. Previously routed but unimplemented, so it 404ed.
+    # @param app_id [String] app id or name
+    # @param id [String] build id
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Build, Integer, Hash)>] Build data, response status code and response headers
+    def build_with_http_info(app_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.build ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.build"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.build"
+      end
+      # resource path
+      local_var_path = '/api/v1/apps/{app_id}/builds/{id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Build'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.build",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#build\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # list builds
+    # Builds for an app, newest first. Keyset paginated: when more results exist the response carries an RFC 8288 Link header with rel=\"next\". Absent means the last page.
+    # @param app_id [String] app id or name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Page size. Defaults to 25, capped at 100.
+    # @option opts [String] :cursor Opaque cursor, taken from the previous response&#39;s Link header.
+    # @return [Array<Build>]
+    def builds(app_id, opts = {})
+      data, _status_code, _headers = builds_with_http_info(app_id, opts)
+      data
+    end
+
+    # list builds
+    # Builds for an app, newest first. Keyset paginated: when more results exist the response carries an RFC 8288 Link header with rel&#x3D;\&quot;next\&quot;. Absent means the last page.
+    # @param app_id [String] app id or name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Page size. Defaults to 25, capped at 100.
+    # @option opts [String] :cursor Opaque cursor, taken from the previous response&#39;s Link header.
+    # @return [Array<(Array<Build>, Integer, Hash)>] Array<Build> data, response status code and response headers
+    def builds_with_http_info(app_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.builds ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.builds"
+      end
+      # resource path
+      local_var_path = '/api/v1/apps/{app_id}/builds'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Build>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.builds",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#builds\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # list all config-vars
     # @param app_id_or_name [String] app id or name
     # @param [Hash] opts the optional parameters
@@ -643,6 +781,142 @@ module BuildClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_namespace\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # show deployment
+    # @param app_id [String] app id or name
+    # @param id [String] deployment id
+    # @param [Hash] opts the optional parameters
+    # @return [Deployment]
+    def deployment(app_id, id, opts = {})
+      data, _status_code, _headers = deployment_with_http_info(app_id, id, opts)
+      data
+    end
+
+    # show deployment
+    # @param app_id [String] app id or name
+    # @param id [String] deployment id
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Deployment, Integer, Hash)>] Deployment data, response status code and response headers
+    def deployment_with_http_info(app_id, id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.deployment ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.deployment"
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.deployment"
+      end
+      # resource path
+      local_var_path = '/api/v1/apps/{app_id}/deployments/{id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Deployment'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.deployment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#deployment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # list deployments
+    # Deployments for an app, newest first. Keyset paginated the same way as builds: an RFC 8288 Link header when more results exist.
+    # @param app_id [String] app id or name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Page size. Defaults to 25, capped at 100.
+    # @option opts [String] :cursor Opaque cursor, taken from the previous response&#39;s Link header.
+    # @return [Array<Deployment>]
+    def deployments(app_id, opts = {})
+      data, _status_code, _headers = deployments_with_http_info(app_id, opts)
+      data
+    end
+
+    # list deployments
+    # Deployments for an app, newest first. Keyset paginated the same way as builds: an RFC 8288 Link header when more results exist.
+    # @param app_id [String] app id or name
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit Page size. Defaults to 25, capped at 100.
+    # @option opts [String] :cursor Opaque cursor, taken from the previous response&#39;s Link header.
+    # @return [Array<(Array<Deployment>, Integer, Hash)>] Array<Deployment> data, response status code and response headers
+    def deployments_with_http_info(app_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.deployments ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.deployments"
+      end
+      # resource path
+      local_var_path = '/api/v1/apps/{app_id}/deployments'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Deployment>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.deployments",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#deployments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
