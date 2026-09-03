@@ -14,66 +14,16 @@ require 'date'
 require 'time'
 
 module BuildClient
-  class Build
-    attr_accessor :id
+  class BuildBuildpacksInner
+    attr_accessor :url
 
-    attr_accessor :app
-
-    attr_accessor :user
-
-    attr_accessor :source_blob
-
-    attr_accessor :buildpacks
-
-    attr_accessor :stack
-
-    # Build state, reported verbatim rather than collapsed.
-    attr_accessor :state
-
-    attr_accessor :output_stream_url
-
-    attr_accessor :slug
-
-    attr_accessor :created_at
-
-    attr_accessor :updated_at
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'app' => :'app',
-        :'user' => :'user',
-        :'source_blob' => :'source_blob',
-        :'buildpacks' => :'buildpacks',
-        :'stack' => :'stack',
-        :'state' => :'state',
-        :'output_stream_url' => :'output_stream_url',
-        :'slug' => :'slug',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'url' => :'url',
+        :'name' => :'name'
       }
     end
 
@@ -90,27 +40,15 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'app' => :'GetPipelineDiff200ResponseSource',
-        :'user' => :'BuildUser',
-        :'source_blob' => :'BuildSourceBlob',
-        :'buildpacks' => :'Array<BuildBuildpacksInner>',
-        :'stack' => :'String',
-        :'state' => :'String',
-        :'output_stream_url' => :'String',
-        :'slug' => :'BuildSlug',
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'url' => :'String',
+        :'name' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'buildpacks',
-        :'stack',
-        :'output_stream_url',
-        :'slug',
+        :'name'
       ])
     end
 
@@ -118,74 +56,24 @@ module BuildClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::Build` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BuildClient::BuildBuildpacksInner` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::Build`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BuildClient::BuildBuildpacksInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      else
-        self.id = nil
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
       end
 
-      if attributes.key?(:'app')
-        self.app = attributes[:'app']
-      else
-        self.app = nil
-      end
-
-      if attributes.key?(:'user')
-        self.user = attributes[:'user']
-      end
-
-      if attributes.key?(:'source_blob')
-        self.source_blob = attributes[:'source_blob']
-      end
-
-      if attributes.key?(:'buildpacks')
-        if (value = attributes[:'buildpacks']).is_a?(Array)
-          self.buildpacks = value
-        end
-      end
-
-      if attributes.key?(:'stack')
-        self.stack = attributes[:'stack']
-      else
-        self.stack = nil
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      else
-        self.state = nil
-      end
-
-      if attributes.key?(:'output_stream_url')
-        self.output_stream_url = attributes[:'output_stream_url']
-      end
-
-      if attributes.key?(:'slug')
-        self.slug = attributes[:'slug']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      else
-        self.created_at = nil
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      else
-        self.updated_at = nil
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -194,26 +82,6 @@ module BuildClient
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @app.nil?
-        invalid_properties.push('invalid value for "app", app cannot be nil.')
-      end
-
-      if @state.nil?
-        invalid_properties.push('invalid value for "state", state cannot be nil.')
-      end
-
-      if @created_at.nil?
-        invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
-      end
-
-      if @updated_at.nil?
-        invalid_properties.push('invalid value for "updated_at", updated_at cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -221,64 +89,7 @@ module BuildClient
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @app.nil?
-      return false if @state.nil?
-      state_validator = EnumAttributeValidator.new('String', ["pending", "packing", "uploading", "succeeded", "failed"])
-      return false unless state_validator.valid?(@state)
-      return false if @created_at.nil?
-      return false if @updated_at.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
-      end
-
-      @id = id
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] app Value to be assigned
-    def app=(app)
-      if app.nil?
-        fail ArgumentError, 'app cannot be nil'
-      end
-
-      @app = app
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["pending", "packing", "uploading", "succeeded", "failed"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
-      end
-      @state = state
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] created_at Value to be assigned
-    def created_at=(created_at)
-      if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
-      end
-
-      @created_at = created_at
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] updated_at Value to be assigned
-    def updated_at=(updated_at)
-      if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
-      end
-
-      @updated_at = updated_at
     end
 
     # Checks equality by comparing each attribute.
@@ -286,17 +97,8 @@ module BuildClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          app == o.app &&
-          user == o.user &&
-          source_blob == o.source_blob &&
-          buildpacks == o.buildpacks &&
-          stack == o.stack &&
-          state == o.state &&
-          output_stream_url == o.output_stream_url &&
-          slug == o.slug &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+          url == o.url &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -308,7 +110,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, app, user, source_blob, buildpacks, stack, state, output_stream_url, slug, created_at, updated_at].hash
+      [url, name].hash
     end
 
     # Builds the object from hash

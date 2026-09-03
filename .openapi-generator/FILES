@@ -30,6 +30,8 @@ docs/AppPipeline.md
 docs/AppTeam.md
 docs/AttachmentAddon.md
 docs/Build.md
+docs/BuildBuildpacksInner.md
+docs/BuildSlug.md
 docs/BuildSourceBlob.md
 docs/BuildUser.md
 docs/BuildpackInstallation.md
@@ -130,6 +132,8 @@ lib/build_client/models/app_pipeline.rb
 lib/build_client/models/app_team.rb
 lib/build_client/models/attachment_addon.rb
 lib/build_client/models/build.rb
+lib/build_client/models/build_buildpacks_inner.rb
+lib/build_client/models/build_slug.rb
 lib/build_client/models/build_source_blob.rb
 lib/build_client/models/build_user.rb
 lib/build_client/models/buildpack_installation.rb
@@ -189,9 +193,6 @@ lib/build_client/models/update_buildpacks_request_updates_inner.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/models/build_source_blob_spec.rb
-spec/models/build_spec.rb
-spec/models/build_user_spec.rb
-spec/models/deployment_build_spec.rb
-spec/models/deployment_spec.rb
+spec/models/build_buildpacks_inner_spec.rb
+spec/models/build_slug_spec.rb
 spec/spec_helper.rb

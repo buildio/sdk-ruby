@@ -8,11 +8,11 @@
 | **app** | [**GetPipelineDiff200ResponseSource**](GetPipelineDiff200ResponseSource.md) |  |  |
 | **user** | [**BuildUser**](BuildUser.md) |  | [optional] |
 | **source_blob** | [**BuildSourceBlob**](BuildSourceBlob.md) |  | [optional] |
-| **buildpacks** | **Array&lt;Object&gt;** |  | [optional] |
+| **buildpacks** | [**Array&lt;BuildBuildpacksInner&gt;**](BuildBuildpacksInner.md) |  | [optional] |
 | **stack** | **String** |  |  |
 | **state** | **String** | Build state, reported verbatim rather than collapsed. |  |
 | **output_stream_url** | **String** |  | [optional] |
-| **slug** | **Object** |  | [optional] |
+| **slug** | [**BuildSlug**](BuildSlug.md) |  | [optional] |
 | **created_at** | **Time** |  |  |
 | **updated_at** | **Time** |  |  |
 

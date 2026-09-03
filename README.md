@@ -188,6 +188,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::AppTeam](docs/AppTeam.md)
  - [BuildClient::AttachmentAddon](docs/AttachmentAddon.md)
  - [BuildClient::Build](docs/Build.md)
+ - [BuildClient::BuildBuildpacksInner](docs/BuildBuildpacksInner.md)
+ - [BuildClient::BuildSlug](docs/BuildSlug.md)
  - [BuildClient::BuildSourceBlob](docs/BuildSourceBlob.md)
  - [BuildClient::BuildUser](docs/BuildUser.md)
  - [BuildClient::BuildpackInstallation](docs/BuildpackInstallation.md)
