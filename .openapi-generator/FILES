@@ -193,6 +193,4 @@ lib/build_client/models/update_buildpacks_request_updates_inner.rb
 lib/build_client/models/update_domain_request.rb
 lib/build_client/models/validation_errors.rb
 lib/build_client/version.rb
-spec/models/build_buildpacks_inner_spec.rb
-spec/models/build_slug_spec.rb
 spec/spec_helper.rb

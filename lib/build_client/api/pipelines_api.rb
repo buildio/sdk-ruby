@@ -216,9 +216,9 @@ module BuildClient
     end
 
     # list pipelines
-    # Lists all pipelines accessible to the current user. Optionally filter by team.
+    # Lists pipelines for the current user. Defaults to personal team; pass team_id to select a different team.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :team_id Filter pipelines by team ID or name
+    # @option opts [String] :team_id Team ID or name. Defaults to personal team (matching apps#index).
     # @return [Array<Pipeline>]
     def list_pipelines(opts = {})
       data, _status_code, _headers = list_pipelines_with_http_info(opts)
@@ -226,9 +226,9 @@ module BuildClient
     end
 
     # list pipelines
-    # Lists all pipelines accessible to the current user. Optionally filter by team.
+    # Lists pipelines for the current user. Defaults to personal team; pass team_id to select a different team.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :team_id Filter pipelines by team ID or name
+    # @option opts [String] :team_id Team ID or name. Defaults to personal team (matching apps#index).
     # @return [Array<(Array<Pipeline>, Integer, Hash)>] Array<Pipeline> data, response status code and response headers
     def list_pipelines_with_http_info(opts = {})
       if @api_client.config.debugging

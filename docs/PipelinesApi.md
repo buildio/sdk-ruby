@@ -225,7 +225,7 @@ end
 
 list pipelines
 
-Lists all pipelines accessible to the current user. Optionally filter by team.
+Lists pipelines for the current user. Defaults to personal team; pass team_id to select a different team.
 
 ### Examples
 
@@ -240,7 +240,7 @@ end
 
 api_instance = BuildClient::PipelinesApi.new
 opts = {
-  team_id: 'team_id_example' # String | Filter pipelines by team ID or name
+  team_id: 'team_id_example' # String | Team ID or name. Defaults to personal team (matching apps#index).
 }
 
 begin
@@ -274,7 +274,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **team_id** | **String** | Filter pipelines by team ID or name | [optional] |
+| **team_id** | **String** | Team ID or name. Defaults to personal team (matching apps#index). | [optional] |
 
 ### Return type
 
