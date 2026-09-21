@@ -17,10 +17,16 @@ module BuildClient
   class DynoExecResponse
     attr_accessor :output
 
+    attr_accessor :stderr
+
+    attr_accessor :exit_code
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'output' => :'output'
+        :'output' => :'output',
+        :'stderr' => :'stderr',
+        :'exit_code' => :'exit_code'
       }
     end
 
@@ -37,7 +43,9 @@ module BuildClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'output' => :'String'
+        :'output' => :'String',
+        :'stderr' => :'String',
+        :'exit_code' => :'Integer'
       }
     end
 
@@ -68,6 +76,18 @@ module BuildClient
       else
         self.output = nil
       end
+
+      if attributes.key?(:'stderr')
+        self.stderr = attributes[:'stderr']
+      else
+        self.stderr = nil
+      end
+
+      if attributes.key?(:'exit_code')
+        self.exit_code = attributes[:'exit_code']
+      else
+        self.exit_code = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -79,6 +99,14 @@ module BuildClient
         invalid_properties.push('invalid value for "output", output cannot be nil.')
       end
 
+      if @stderr.nil?
+        invalid_properties.push('invalid value for "stderr", stderr cannot be nil.')
+      end
+
+      if @exit_code.nil?
+        invalid_properties.push('invalid value for "exit_code", exit_code cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -87,6 +115,8 @@ module BuildClient
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @output.nil?
+      return false if @stderr.nil?
+      return false if @exit_code.nil?
       true
     end
 
@@ -100,12 +130,34 @@ module BuildClient
       @output = output
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] stderr Value to be assigned
+    def stderr=(stderr)
+      if stderr.nil?
+        fail ArgumentError, 'stderr cannot be nil'
+      end
+
+      @stderr = stderr
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] exit_code Value to be assigned
+    def exit_code=(exit_code)
+      if exit_code.nil?
+        fail ArgumentError, 'exit_code cannot be nil'
+      end
+
+      @exit_code = exit_code
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          output == o.output
+          output == o.output &&
+          stderr == o.stderr &&
+          exit_code == o.exit_code
     end
 
     # @see the `==` method
@@ -117,7 +169,7 @@ module BuildClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [output].hash
+      [output, stderr, exit_code].hash
     end
 
     # Builds the object from hash
