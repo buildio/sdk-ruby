@@ -415,5 +415,79 @@ module BuildClient
       end
       return data, status_code, headers
     end
+
+    # transfer addon billing
+    # Move which app owns and pays for the addon. The target app must already have the addon attached and must belong to the same team.
+    # @param id [String] Addon ID or name
+    # @param transfer_addon_billing_request [TransferAddonBillingRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AddonWithAttachments]
+    def transfer_addon_billing(id, transfer_addon_billing_request, opts = {})
+      data, _status_code, _headers = transfer_addon_billing_with_http_info(id, transfer_addon_billing_request, opts)
+      data
+    end
+
+    # transfer addon billing
+    # Move which app owns and pays for the addon. The target app must already have the addon attached and must belong to the same team.
+    # @param id [String] Addon ID or name
+    # @param transfer_addon_billing_request [TransferAddonBillingRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AddonWithAttachments, Integer, Hash)>] AddonWithAttachments data, response status code and response headers
+    def transfer_addon_billing_with_http_info(id, transfer_addon_billing_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AddonsApi.transfer_addon_billing ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling AddonsApi.transfer_addon_billing"
+      end
+      # verify the required parameter 'transfer_addon_billing_request' is set
+      if @api_client.config.client_side_validation && transfer_addon_billing_request.nil?
+        fail ArgumentError, "Missing the required parameter 'transfer_addon_billing_request' when calling AddonsApi.transfer_addon_billing"
+      end
+      # resource path
+      local_var_path = '/api/v1/addons/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(transfer_addon_billing_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AddonWithAttachments'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['bearer', 'oauth2']
+
+      new_options = opts.merge(
+        :operation => :"AddonsApi.transfer_addon_billing",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AddonsApi#transfer_addon_billing\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

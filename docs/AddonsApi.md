@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 | [**get_addon_info**](AddonsApi.md#get_addon_info) | **GET** /api/v1/addons/{id} | show addon info |
 | [**list_app_addons**](AddonsApi.md#list_app_addons) | **GET** /api/v1/apps/{app_id_or_name}/addons | list addons |
 | [**list_team_addons**](AddonsApi.md#list_team_addons) | **GET** /api/v1/teams/{team_id}/addons | list team addons |
+| [**transfer_addon_billing**](AddonsApi.md#transfer_addon_billing) | **PATCH** /api/v1/addons/{id} | transfer addon billing |
 
 
 ## create_addon
@@ -449,5 +450,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## transfer_addon_billing
+
+> <AddonWithAttachments> transfer_addon_billing(id, transfer_addon_billing_request)
+
+transfer addon billing
+
+Move which app owns and pays for the addon. The target app must already have the addon attached and must belong to the same team.
+
+### Examples
+
+```ruby
+require 'time'
+require 'build_client'
+# setup authorization
+BuildClient.configure do |config|
+  # Configure Bearer authorization: bearer
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BuildClient::AddonsApi.new
+id = 'id_example' # String | Addon ID or name
+transfer_addon_billing_request = BuildClient::TransferAddonBillingRequest.new({billing_entity: BuildClient::TransferAddonBillingRequestBillingEntity.new({app: 'app_example'})}) # TransferAddonBillingRequest | 
+
+begin
+  # transfer addon billing
+  result = api_instance.transfer_addon_billing(id, transfer_addon_billing_request)
+  p result
+rescue BuildClient::ApiError => e
+  puts "Error when calling AddonsApi->transfer_addon_billing: #{e}"
+end
+```
+
+#### Using the transfer_addon_billing_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AddonWithAttachments>, Integer, Hash)> transfer_addon_billing_with_http_info(id, transfer_addon_billing_request)
+
+```ruby
+begin
+  # transfer addon billing
+  data, status_code, headers = api_instance.transfer_addon_billing_with_http_info(id, transfer_addon_billing_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AddonWithAttachments>
+rescue BuildClient::ApiError => e
+  puts "Error when calling AddonsApi->transfer_addon_billing_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | Addon ID or name |  |
+| **transfer_addon_billing_request** | [**TransferAddonBillingRequest**](TransferAddonBillingRequest.md) |  |  |
+
+### Return type
+
+[**AddonWithAttachments**](AddonWithAttachments.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

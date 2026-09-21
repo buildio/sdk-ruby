@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *BuildClient::AddonsApi* | [**get_addon_info**](docs/AddonsApi.md#get_addon_info) | **GET** /api/v1/addons/{id} | show addon info
 *BuildClient::AddonsApi* | [**list_app_addons**](docs/AddonsApi.md#list_app_addons) | **GET** /api/v1/apps/{app_id_or_name}/addons | list addons
 *BuildClient::AddonsApi* | [**list_team_addons**](docs/AddonsApi.md#list_team_addons) | **GET** /api/v1/teams/{team_id}/addons | list team addons
+*BuildClient::AddonsApi* | [**transfer_addon_billing**](docs/AddonsApi.md#transfer_addon_billing) | **PATCH** /api/v1/addons/{id} | transfer addon billing
 *BuildClient::BuildpacksApi* | [**list_buildpacks**](docs/BuildpacksApi.md#list_buildpacks) | **GET** /api/v1/apps/{app_id_or_name}/buildpacks | list buildpacks
 *BuildClient::BuildpacksApi* | [**update_buildpacks**](docs/BuildpacksApi.md#update_buildpacks) | **PUT** /api/v1/apps/{app_id_or_name}/buildpacks | update buildpacks
 *BuildClient::CollaboratorsApi* | [**api_v1_apps_app_id_collaborators_get**](docs/CollaboratorsApi.md#api_v1_apps_app_id_collaborators_get) | **GET** /api/v1/apps/{app_id}/collaborators | List collaborators for an app
@@ -243,6 +244,8 @@ Class | Method | HTTP request | Description
  - [BuildClient::PromotionTargetApp](docs/PromotionTargetApp.md)
  - [BuildClient::PromotionTargetPromotion](docs/PromotionTargetPromotion.md)
  - [BuildClient::Team](docs/Team.md)
+ - [BuildClient::TransferAddonBillingRequest](docs/TransferAddonBillingRequest.md)
+ - [BuildClient::TransferAddonBillingRequestBillingEntity](docs/TransferAddonBillingRequestBillingEntity.md)
  - [BuildClient::UpdateAppRequest](docs/UpdateAppRequest.md)
  - [BuildClient::UpdateBuildpacksRequest](docs/UpdateBuildpacksRequest.md)
  - [BuildClient::UpdateBuildpacksRequestUpdatesInner](docs/UpdateBuildpacksRequestUpdatesInner.md)
